@@ -1,4 +1,10 @@
 .root {
+    position: sticky;
+    z-index: 10;
+}
+.mainHeader {
+    width: var(--pepsi-desktop-width);
+    margin: 0 auto;
     background-color: rgb(var(--venia-grey));
     box-shadow: 0 1px rgb(var(--venia-border));
     display: grid;
@@ -8,8 +14,6 @@
     grid-row-gap: 0.5rem;
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
-    z-index: 10;
 }
 
 .open {

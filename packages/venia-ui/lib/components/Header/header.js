@@ -6,6 +6,7 @@ import Icon from '../Icon';
 import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
 
+import HeaderTop from './HeaderTop';
 import CartTrigger from './cartTrigger';
 import NavTrigger from './navTrigger';
 import SearchTrigger from './searchTrigger';
@@ -41,29 +42,33 @@ const Header = props => {
 
     return (
         <header className={rootClass}>
-            <div className={classes.toolbar}>
-                <div className={classes.primaryActions}>
-                    <NavTrigger>
-                        <Icon src={MenuIcon} />
-                    </NavTrigger>
-                </div>
-                <OnlineIndicator
-                    hasBeenOffline={hasBeenOffline}
-                    isOnline={isOnline}
-                />
-                <Link to={resourceUrl('/')}>
-                    <Logo classes={{ logo: classes.logo }} />
-                </Link>
-                <div className={classes.secondaryActions}>
-                    <SearchTrigger
-                        searchOpen={searchOpen}
-                        toggleSearch={toggleSearch}
-                    >
-                        {searchIcon}
-                    </SearchTrigger>
-                    <CartTrigger {...cartTriggerProps} />
+            <HeaderTop />
+            <div className={classes.mainHeader}>
+                <div className={classes.toolbar}>
+                    <div className={classes.primaryActions}>
+                        <NavTrigger>
+                            <Icon src={MenuIcon} />
+                        </NavTrigger>
+                    </div>
+                    <OnlineIndicator
+                        hasBeenOffline={hasBeenOffline}
+                        isOnline={isOnline}
+                    />
+                    <Link to={resourceUrl('/')}>
+                        <Logo classes={{ logo: classes.logo }} />
+                    </Link>
+                    <div className={classes.secondaryActions}>
+                        <SearchTrigger
+                            searchOpen={searchOpen}
+                            toggleSearch={toggleSearch}
+                        >
+                            {searchIcon}
+                        </SearchTrigger>
+                        <CartTrigger {...cartTriggerProps} />
+                    </div>
                 </div>
             </div>
+
             <Suspense fallback={searchOpen ? suspenseFallback : null}>
                 <Route
                     render={({ history, location }) => (

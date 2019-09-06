@@ -1,0 +1,18 @@
+.root {
+   width: var(--pepsi-full-width);
+   border-bottom: 1px solid rgb(var(--pepsi-border));
+   font-weight: 100;
+}
+.content {
+    width: var(--pepsi-desktop-width);
+    margin:0 auto;
+    display: flex;
+    padding: 20px 0;
+}
+.phoneNumber {
+    flex: 1;
+}
+.text {
+    flex: auto;
+    color: rgb(var(--pepsi-red));
+}
