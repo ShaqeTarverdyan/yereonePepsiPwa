@@ -7,7 +7,9 @@ import { useSearchParam } from '@magento/peregrine';
 import Icon from '../Icon';
 import TextInput from '../TextInput';
 import Trigger from '../Trigger';
-
+import search from './search.png'
+import Image from '../Image';
+import defaultClasses from './searchField.css';
 const clearIcon = <Icon src={ClearIcon} size={18} />;
 const searchIcon = <Icon src={SearchIcon} size={18} />;
 
@@ -40,14 +42,16 @@ const SearchField = props => {
     const resetButton = value ? (
         <Trigger action={resetForm}>{clearIcon}</Trigger>
     ) : null;
-
+    
     return (
         <TextInput
             after={resetButton}
-            before={searchIcon}
+            before={<Image src={search} style={{width:'25px', height:'25px'}} />}
             field="search_query"
             onFocus={onFocus}
             onValueChange={onChange}
+            placeholder='Search here ...'
+            classes={defaultClasses}
         />
     );
 };

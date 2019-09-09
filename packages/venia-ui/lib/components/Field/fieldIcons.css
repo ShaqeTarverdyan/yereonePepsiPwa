@@ -14,7 +14,7 @@
 }
 
 .input > input {
-    padding-left: calc(1.875rem * var(--iconsBefore) + 0.375rem - 1px);
+    padding-left: calc(2.5rem * var(--iconsBefore) + 0.375rem - 1px);
     padding-right: calc(1.875rem * var(--iconsAfter) + 0.375rem - 1px);
 }
 
@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     pointer-events: none;
-    width: 2.25rem;
+    width: 45px;
 }
 
 .before:empty,

@@ -1,30 +1,11 @@
 import React, { useEffect } from 'react';
 import { func, number, shape, string } from 'prop-types';
-import { ShoppingCart as ShoppingCartIcon } from 'react-feather';
-
-import Icon from '../Icon';
+import shoppingCart from './shopping-cart.png'
+import Image from '../Image';
 import CartCounter from './cartCounter';
-
 import { mergeClasses } from '../../classify';
 import defaultClasses from './cartTrigger.css';
 
-const CART_ICON_FILLED = (
-    <Icon
-        src={ShoppingCartIcon}
-        attrs={{
-            fill: 'rgb(var(--venia-text))',
-            stroke: 'rgb(var(--venia-text))'
-        }}
-    />
-);
-const CART_ICON_EMPTY = (
-    <Icon
-        src={ShoppingCartIcon}
-        attrs={{
-            stroke: 'rgb(var(--venia-text))'
-        }}
-    />
-);
 
 const CartTrigger = props => {
     const { cart, getCartDetails, toggleCart } = props;
@@ -37,7 +18,6 @@ const CartTrigger = props => {
         getCartDetails();
     }, [getCartDetails]);
 
-    const cartIcon = numItems > 0 ? CART_ICON_FILLED : CART_ICON_EMPTY;
     const buttonAriaLabel = `Toggle mini cart. You have ${numItems} items in your cart.`;
 
     return (
@@ -46,7 +26,7 @@ const CartTrigger = props => {
             aria-label={buttonAriaLabel}
             onClick={toggleCart}
         >
-            {cartIcon}
+            <Image  src={shoppingCart} style={{width:'25px',  height:'25px'}}/>
             <CartCounter numItems={numItems} />
         </button>
     );

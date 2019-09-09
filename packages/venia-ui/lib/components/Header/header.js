@@ -1,11 +1,12 @@
 import React, { Suspense } from 'react';
 import { bool, func, object, shape, string } from 'prop-types';
-import { Menu as MenuIcon, Search as SearchIcon } from 'react-feather';
 
-import Icon from '../Icon';
 import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
 
+
+
+import UserTrigger from './userTrigger';
 import HeaderTop from './HeaderTop';
 import CartTrigger from './cartTrigger';
 import NavTrigger from './navTrigger';
@@ -31,7 +32,6 @@ const Header = props => {
     const cartTriggerProps = { cart, getCartDetails, toggleCart };
     const classes = mergeClasses(defaultClasses, props.classes);
     const rootClass = searchOpen ? classes.open : classes.closed;
-    const searchIcon = <Icon src={SearchIcon} />;
     const suspenseFallback = (
         <div className={classes.searchFallback}>
             <div className={classes.input}>
@@ -44,42 +44,34 @@ const Header = props => {
         <header className={rootClass}>
             <HeaderTop />
             <div className={classes.mainHeader}>
-                <div className={classes.toolbar}>
-                    <div className={classes.primaryActions}>
-                        <NavTrigger>
-                            <Icon src={MenuIcon} />
-                        </NavTrigger>
-                    </div>
-                    <OnlineIndicator
-                        hasBeenOffline={hasBeenOffline}
-                        isOnline={isOnline}
-                    />
+                <div >
                     <Link to={resourceUrl('/')}>
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
-                    <div className={classes.secondaryActions}>
-                        <SearchTrigger
-                            searchOpen={searchOpen}
-                            toggleSearch={toggleSearch}
-                        >
-                            {searchIcon}
-                        </SearchTrigger>
+                </div>
+                <div className={classes.actions}>
+                    <div>
+                        <Suspense fallback={searchOpen ? suspenseFallback : null}>
+                            <Route
+                                render={({ history, location }) => (
+                                    <SearchBar
+                                        isOpen={true}
+                                        history={history}
+                                        location={location}
+                                    />
+                                )}
+                            />
+                        </Suspense>
+                    </div>
+                    <div className={classes.userTrigger}>
+                        <UserTrigger />
+                    </div>
+                    <div className={classes.cartTrigger}>
                         <CartTrigger {...cartTriggerProps} />
                     </div>
+
                 </div>
             </div>
-
-            <Suspense fallback={searchOpen ? suspenseFallback : null}>
-                <Route
-                    render={({ history, location }) => (
-                        <SearchBar
-                            isOpen={searchOpen}
-                            history={history}
-                            location={location}
-                        />
-                    )}
-                />
-            </Suspense>
         </header>
     );
 };

@@ -1,4 +1,12 @@
 .root {
     font-weight: 600;
-    margin-left: 0.3rem;
+    background-color: rgb(var( --pepsi-red));
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 3px;
+    border-radius: 10px;
+    font-size: small;
+    width: 20px;
 }
