@@ -1,0 +1,10 @@
+
+
+.tree {
+    position: relative;
+}
+
+.inactive {
+    position: fixed;
+    visibility: hidden;
+}

@@ -2,12 +2,22 @@ query navigationMenu($id: Int!) {
   category(id: $id) {
     id
     name
-    children {
+    children { 
       children_count
       id
       include_in_menu
       name
       position
+      level
+      url_key
+      url_path
+      product_count
+      menu_top_block
+      menu_bottom_block
+      menu_left_block
+      menu_right_block
+      submenu_type
+      path
       # Temporarily include products field in query to get around GraphQL bug
       # affecting Magento Cloud Pro instances. Remove once magento\graphql-ce\#374 is fixed.
       productImagePreview: products(pageSize: 1) {

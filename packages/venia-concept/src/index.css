@@ -6,29 +6,41 @@
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: local('Roboto Medium'), url(./fonts/Roboto-Medium.ttf);
+    src: local('Roboto Medium'), url(./fonts/Roboto/Roboto-Medium.ttf);
 }
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: local('Roboto Light'), url(./fonts/Roboto-Light.ttf);
+    src: local('Roboto Light'), url(./fonts/Roboto/Roboto-Light.ttf);
 }
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: local('Roboto Regular'), url(./fonts/Roboto-Regular.ttf);
+    src: local('Roboto Regular'), url(./fonts/Roboto/Roboto-Regular.ttf);
 }
 @font-face {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 900;
     font-display: swap;
-    src: local('Roboto Thin'), url(./fonts/Roboto-Thin.ttf);
+    src: local('Roboto Thin'), url(./fonts/Roboto/Roboto-Thin.ttf);
 }
+
+@font-face {
+    font-family: "Pepsi";
+    src:url("./fonts/Pepsi/pepsi.eot");
+    src:url("./fonts/Pepsi/pepsi.eot?#iefix") format("embedded-opentype"),
+      url("./fonts/Pepsi/pepsi.woff") format("woff"),
+      url("./fonts/Pepsi/pepsi.ttf") format("truetype"),
+      url("./fonts/Pepsi/pepsi.svg#pepsi") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+
 :root {
     --venia-anim-bounce: cubic-bezier(0.5, 1.8, 0.9, 0.8);
     --venia-anim-in: cubic-bezier(0, 0, 0.2, 1);
@@ -39,6 +51,7 @@
     --venia-error-alt: 255, 226, 234;
     --venia-font: Muli, -apple-system, BlinkMacSystemFont, sans-serif;
     --pepsi-font-roboto: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    --pepsi-font-pepsi: Pepsi, -apple-system, BlinkMacSystemFont, sans-serif;
     --venia-grey: 246, 246, 246;
     --venia-grey-dark: 209, 209, 209;
     --venia-grey-darker: 112, 112, 112;

@@ -3,6 +3,7 @@ import { bool, func, object, shape, string } from 'prop-types';
 
 import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
+import NavigationDesktop from '../NavigationDesktop';
 
 
 
@@ -45,6 +46,7 @@ const Header = props => {
             <HeaderTop />
             <div className={classes.mainHeader}>
                 <div >
+                    <NavTrigger>menuuu</NavTrigger>
                     <Link to={resourceUrl('/')}>
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
@@ -69,8 +71,11 @@ const Header = props => {
                     <div className={classes.cartTrigger}>
                         <CartTrigger {...cartTriggerProps} />
                     </div>
-
+                    
                 </div>
+            </div>
+            <div>
+                <NavigationDesktop />
             </div>
         </header>
     );
