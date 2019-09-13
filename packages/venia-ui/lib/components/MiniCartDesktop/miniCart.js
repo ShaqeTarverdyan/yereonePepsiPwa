@@ -47,7 +47,6 @@ const MiniCart = props => {
 
     return (
         <aside className={rootClass}>
-            {/* <Header closeDrawer={closeDrawer} isEditingItem={isEditingItem} /> */}
             <Body
                 beginEditItem={beginEditItem}
                 cartItems={cartItems}
@@ -62,7 +61,7 @@ const MiniCart = props => {
                 removeItemFromCart={removeItemFromCart}
                 updateItemInCart={updateItemInCart}
             />
-            <Mask isActive={isMiniCartMaskOpen} dismiss={cancelCheckout} />
+            {/* <Mask isActive={isMiniCartMaskOpen} dismiss={cancelCheckout} /> */}
             {footer}
         </aside>
     );

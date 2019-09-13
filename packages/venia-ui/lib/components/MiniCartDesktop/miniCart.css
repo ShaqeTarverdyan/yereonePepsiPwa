@@ -7,20 +7,21 @@
     box-shadow: -1px 0 rgb(var(--venia-border));
     display: grid;
     grid-template-rows: min-content 1fr;
-    height: var(--minicart-header-height);
+    height: auto;
     opacity: 0;
     overflow: hidden;
-    position: fixed;
+    /* position: fixed; */
     right: 10px;
     top: 0;
-    transform: translate3d(100%, 0, 0);
+    /* transform: translate3d(100%, 0, 0);
     transition-duration: 192ms;
     transition-property: opacity, transform, visibility;
-    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1); */
     visibility: hidden;
     width: 100%;
-    max-width: 360px;
+    /* max-width: 360px; */
     z-index: var(--base-z-index);
+    padding: 20px;
 }
 
 /* state: open */
@@ -28,8 +29,8 @@
 .root_open {
     composes: root;
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    /* transform: translate3d(0, 0, 0);
     transition-duration: 224ms;
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1); */
     visibility: visible;
 }

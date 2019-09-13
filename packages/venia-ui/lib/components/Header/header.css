@@ -36,6 +36,19 @@
     min-height: 3.5rem;
     padding: 0 1rem;
 }
+.cart {
+    position: relative;
+}
+.miniCart{
+    display: none;
+    position: absolute;
+    right: 0;
+    width: 490px;
+    box-shadow: 0 3px 10px -5px;  
+}
+.cart:hover .miniCart{
+    display: block
+}
 
 .navTrigger,
 .cartTrigger {

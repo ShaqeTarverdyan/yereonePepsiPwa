@@ -4,6 +4,7 @@ import { bool, func, object, shape, string } from 'prop-types';
 import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
 import NavigationDesktop from '../NavigationDesktop';
+import MiniCart from '../MiniCartDesktop';
 
 
 
@@ -68,10 +69,15 @@ const Header = props => {
                     <div className={classes.userTrigger}>
                         <UserTrigger />
                     </div>
-                    <div className={classes.cartTrigger}>
-                        <CartTrigger {...cartTriggerProps} />
+                    <div className={classes.cart}>
+                        <div className={classes.cartTrigger}>
+                            <CartTrigger {...cartTriggerProps} />
+                        </div>
+                        <div className={classes.miniCart}>
+                            <MiniCart isOpen={true} />
+                        </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div>

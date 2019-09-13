@@ -1,0 +1,31 @@
+.root {
+    display: grid;
+    grid-template-columns: 2fr 4fr 1fr 1fr 1fr;
+    align-items: center;
+} 
+.name {
+    
+}
+ 
+.quantity {
+
+}
+.price {
+
+}
+.delete {
+ text-align: end;
+}
+.delete button {
+    outline: none !important;
+}
+.mask {
+    position: absolute;
+    left: -24px;
+    right: -24px;
+    top: -7px;
+    bottom: -7px;
+    background-color: rgb(var(--venia-grey));
+    opacity: 0.5;
+    z-index: 2;
+}  

@@ -20,7 +20,7 @@
 
 .root_active {
     composes: root;
-    opacity: 0.5;
+    /* opacity: 0.5; */
     transition-duration: 224ms;
     visibility: visible;
 }
