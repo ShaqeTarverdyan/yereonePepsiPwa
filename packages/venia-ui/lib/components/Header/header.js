@@ -5,6 +5,8 @@ import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
 import NavigationDesktop from '../NavigationDesktop';
 import MiniCart from '../MiniCartDesktop';
+import Icon from '../Icon';
+import { Menu as MenuIcon } from 'react-feather';
 
 
 
@@ -33,7 +35,6 @@ const Header = props => {
 
     const cartTriggerProps = { cart, getCartDetails, toggleCart };
     const classes = mergeClasses(defaultClasses, props.classes);
-    const rootClass = searchOpen ? classes.open : classes.closed;
     const suspenseFallback = (
         <div className={classes.searchFallback}>
             <div className={classes.input}>
@@ -43,11 +44,10 @@ const Header = props => {
     );
 
     return (
-        <header className={rootClass}>
+        <header className={classes.root}>
             <HeaderTop />
             <div className={classes.mainHeader}>
                 <div >
-                    <NavTrigger>menuuu</NavTrigger>
                     <Link to={resourceUrl('/')}>
                         <Logo classes={{ logo: classes.logo }} />
                     </Link>
@@ -77,11 +77,16 @@ const Header = props => {
                             <MiniCart isOpen={true} />
                         </div>
                     </div>
-
+                    
                 </div>
             </div>
-            <div>
+            <div className={classes.menuList}>
                 <NavigationDesktop />
+            </div>
+            <div className={classes.menuMobile}>
+                <NavTrigger>
+                    <Icon src={MenuIcon} />
+                </NavTrigger>
             </div>
         </header>
     );
@@ -95,7 +100,6 @@ Header.propTypes = {
         open: string,
         primaryActions: string,
         secondaryActions: string,
-        toolbar: string
     }),
     getCartDetails: func,
     searchOpen: bool,

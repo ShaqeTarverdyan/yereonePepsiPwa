@@ -98,5 +98,10 @@
       "path": "./packages/venia-concept/dist/js/[0-9]-*.js",
       "maxSize": "100 kB"
     }
-  ]
+  ],
+  "dependencies": {
+    "node-sass": "~4.12.0",
+    "react-awesome-slider": "~1.0.1",
+    "sass-loader": "~8.0.0"
+  }
 }

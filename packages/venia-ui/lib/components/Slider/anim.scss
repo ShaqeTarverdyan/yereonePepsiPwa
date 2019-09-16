@@ -1,0 +1,98 @@
+.aws-sld {
+
+    --slider-height-percentage: 60%;
+    --slider-transition-duration: 700ms;
+    --organic-arrow-thickness: 3px;
+    --organic-arrow-border-radius: 0px;
+    --organic-arrow-height: 18px;
+    --organic-arrow-color: #000000;
+    --control-button-width: 45px;
+    --control-button-height: 45px;
+    --control-button-background: transparent;
+    --control-bullet-color: black;
+    --control-bullet-active-color: #519c97;
+    --loader-bar-color: #851515;
+    --loader-bar-height: 8px;
+    }
+
+.aws-sld {
+    &__controls {
+       button {
+        width: --control-button-width;
+        margin:20px 12px;
+        height: 45px;
+        color: --control-bullet-color;
+        background-color: white;
+        opacity: 0.4;
+       } 
+    }
+    &__content {
+      p {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        transition: transform 0.45s cubic-bezier(0.15, 0.3, 0.15, 1), opacity 0.35s ease-out;
+        color: white;
+        font-size: xx-large;
+      }
+      p:nth-child(2) {
+        transition-delay: 0.05s, 0.05s;
+      }
+      h1 {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+        font-size: 80px;
+        padding-left: 15%;
+        font-weight: normal;
+        color:white;
+        transition: transform 0.45s cubic-bezier(0.15, 0.3, 0.15, 1), opacity 0.35s ease-out;
+      }
+      h1:nth-child(2) {
+        transition-delay: 0.05s, 0.05s;
+      }
+      h3 {
+        transform: translate3d(0, 0, 0); 
+        opacity: 1;
+        transition: transform 0.45s cubic-bezier(0.15, 0.3, 0.15, 1), opacity 0.35s ease-out;
+      }
+      h3:nth-child(2) {
+        transition-delay: 0.05s, 0.05s;
+      }
+      &--exit {
+        p {
+          transition: transform 0.225s cubic-bezier(0.85, 0, 0.85, 0.7), opacity 0.4s ease-out;
+        }
+        p:nth-child(2) {
+          transition-delay: 0.05s, 0.05s;
+        }
+      }
+      &--moveLeft {
+        p {
+          transform: translate3d(-50px, 0, 0);
+          opacity: 0;
+        }
+        h1 {
+            transform: translate3d(100px, 0, 0);
+            opacity: 0;
+        }
+        h3 {
+            transform: translate3d(0, 50px, 100px);
+            opacity: 0;
+        }
+      }
+      &--moveRight {
+        p {
+          transform: translate3d(50px, 0, 0);
+          opacity: 0;
+        }
+        h1 {
+            transform: translate3d(-100px, 0, 0);
+            opacity: 0;
+        }
+        h3 {
+            transform: translate3d(0, 50px, -100px,);
+            opacity: 0;
+        }
+      }
+    }
+  }
+

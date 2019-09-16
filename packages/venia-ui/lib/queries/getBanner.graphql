@@ -1,0 +1,8 @@
+query banner($id: Int!) {
+    banner(id: $id) {
+        id
+        title
+        image
+        hover_effect
+    }
+}
