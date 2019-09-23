@@ -2,32 +2,25 @@
     box-sizing: border-box;
 }
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoCondensed';
     font-style: normal;
-    font-weight: 300;
+    font-weight: 700;
     font-display: swap;
-    src: local('Roboto Medium'), url(./fonts/Roboto/Roboto-Medium.ttf);
+    src: local('Roboto Medium'), url(./fonts/RobotoCondensed/RobotoCondensedBold.ttf);
 }
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoCondensed';
     font-style: normal;
     font-weight: 100;
     font-display: swap;
-    src: local('Roboto Light'), url(./fonts/Roboto/Roboto-Light.ttf);
+    src: local('Roboto Light'), url(./fonts/RobotoCondensed/RobotoCondensedLight.ttf);
 }
 @font-face {
-    font-family: 'Roboto';
+    font-family: 'RobotoCondensed';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 300;
     font-display: swap;
-    src: local('Roboto Regular'), url(./fonts/Roboto/Roboto-Regular.ttf);
-}
-@font-face {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 900;
-    font-display: swap;
-    src: local('Roboto Thin'), url(./fonts/Roboto/Roboto-Thin.ttf);
+    src: local('Roboto Regular'), url(./fonts/RobotoCondensed/RobotoCondensedRegular.ttf);
 }
 
 @font-face {
@@ -50,7 +43,7 @@
     --venia-error: 192, 18, 63;
     --venia-error-alt: 255, 226, 234;
     --venia-font: Muli, -apple-system, BlinkMacSystemFont, sans-serif;
-    --pepsi-font-roboto: Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    --pepsi-font-roboto: RobotoCondensed, -apple-system, BlinkMacSystemFont, sans-serif;
     --pepsi-font-pepsi: Pepsi, -apple-system, BlinkMacSystemFont, sans-serif;
     --venia-grey: 246, 246, 246;
     --venia-grey-dark: 209, 209, 209;
@@ -68,8 +61,8 @@
     --venia-warning-light: 254, 229, 232;
     --pepsi-full-width: 100%;
     --pepsi-desktop-width: 1500px;
-    --pepsi-red: 255 23 63;
-    --pepsi-blue: 1 119 219;
+    --pepsi-red: 255, 23, 63;
+    --pepsi-blue: 1, 119, 219;
     --pepsi-border: 224, 224, 224;
 }
 

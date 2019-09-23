@@ -31,7 +31,7 @@ const SignIn = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
     const hasError = signInError && Object.keys(signInError).length;
     const errorMessage = hasError ? ERROR_MESSAGE : null;
-
+    
     const handleSubmit = useCallback(
         ({ email: username, password }) => {
             signIn({ username, password });
@@ -75,7 +75,7 @@ const SignIn = props => {
                 className={classes.form}
                 onSubmit={handleSubmit}
             >
-                <Field label="Email" required={true}>
+                <Field label="Login or Email" required={true}>
                     <TextInput
                         autoComplete="email"
                         field="email"
@@ -106,10 +106,12 @@ const SignIn = props => {
                     {'Forgot Password?'}
                 </Button>
             </div>
-            <div className={classes.signInDivider} />
+            
+            
             <div className={classes.createAccountButton}>
+                <p>new  Customer ?</p>
                 <Button
-                    priority="normal"
+                    priority="high"
                     type="button"
                     onClick={handleCreateAccount}
                 >
@@ -134,9 +136,9 @@ SignIn.propTypes = {
     }),
     isGettingDetails: bool,
     isSigningIn: bool,
-    setDefaultUsername: func.isRequired,
-    showCreateAccount: func.isRequired,
-    showForgotPassword: func.isRequired,
-    signIn: func.isRequired,
+    setDefaultUsername: func,
+    showCreateAccount: func,
+    showForgotPassword: func,
+    signIn: func,
     signInError: shape({})
 };

@@ -10,6 +10,7 @@ import renderRoutes from './renderRoutes';
 import errorRecord from '../../util/createErrorRecord';
 import ToastContainer from '../ToastContainer';
 import Icon from '../Icon';
+import Account from '../Account';
 
 import { getToastId, useToasts } from '@magento/peregrine';
 
@@ -89,7 +90,7 @@ const App = props => {
     const { app, closeDrawer } = props;
     const { drawer, hasBeenOffline, isOnline, overlay } = app;
     const cartIsOpen = drawer === 'cart';
-
+    const startRegister = drawer === 'startRegister';
     useEffect(() => {
         if (hasBeenOffline) {
             if (isOnline) {
@@ -134,6 +135,7 @@ const App = props => {
             <Mask isActive={overlay} dismiss={closeDrawer} />
             <Navigation />
             {/* <MiniCart isOpen={cartIsOpen} /> */}
+            <Account  isOpen={startRegister}/>
             <ToastContainer />
         </HeadProvider>
     );

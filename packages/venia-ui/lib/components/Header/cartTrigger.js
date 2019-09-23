@@ -22,6 +22,8 @@ const CartTrigger = props => {
 
     return (
         <button
+            type='button'
+            disabled
             className={classes.root}
             aria-label={buttonAriaLabel}
             onClick={toggleCart}

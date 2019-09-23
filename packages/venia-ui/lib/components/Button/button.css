@@ -2,17 +2,19 @@
     composes: root from '../clickable.css';
     background: none;
     border: 1px solid rgb(var(--color));
-    /* border-radius: 1.5rem; */
     color: rgb(var(--color));
-    font-size: 0.75rem;
-    font-weight: 600;
-    height: 2rem;
-    /* max-width: 7.5rem; */
+    height: 50px;
+    width: 100%;
     padding: 0 1rem;
     transition-duration: 384ms;
     transition-property: background-color, color;
     transition-timing-function: var(--venia-anim-standard);
     --color: var(--pepsi-blue);
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.08em;
 }
 
 .filled {
@@ -57,7 +59,10 @@
     composes: root;
     border-width: 0;
     color: rgb(var(--pepsi-blue));
-    text-decoration: underline;
+    text-decoration: none;
+    width:auto;
+    color: black;
+    height: 20px;
 }
 
 .root_lowPriority:focus {
@@ -69,4 +74,5 @@
 }
 .root_highPriority {
     composes: root filled;
+    
 }

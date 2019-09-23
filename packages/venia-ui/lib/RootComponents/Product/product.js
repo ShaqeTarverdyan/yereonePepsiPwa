@@ -24,10 +24,10 @@ class Product extends Component {
         cartId: string
     };
 
-    addToCart = async (item, quantity) => {
-        const { addItemToCart, cartId } = this.props;
-        await addItemToCart({ cartId, item, quantity });
-    };
+    // addToCart = async (item, quantity) => {
+    //     const { addItemToCart, cartId } = this.props;
+    //     await addItemToCart({ cartId, item, quantity });
+    // };
 
     componentDidMount() {
         window.scrollTo(0, 0);

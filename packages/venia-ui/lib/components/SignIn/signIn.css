@@ -1,8 +1,9 @@
 .root {
     display: grid;
-    gap: 1.5rem;
-    justify-items: stretch;
-    padding: 1rem 1.5rem;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .forgotPassword {
@@ -32,9 +33,13 @@
     composes: modal;
     opacity: 0.9;
 }
-
-.createAccountButton,
-.forgotPasswordButton,
+.forgotPasswordButton {
+    display: flex;
+    justify-content: flex-start;
+}
+.createAccountButton p {
+    line-height: 50px;
+}
 .signInButton {
     align-items: center;
     display: flex;

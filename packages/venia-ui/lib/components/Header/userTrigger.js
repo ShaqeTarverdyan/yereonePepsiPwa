@@ -3,10 +3,11 @@ import user from './user.png';
 import Image from '../Image';
 
 
-const UserTrigger = () => {
+const UserTrigger = props => {
+    const { startRegister } = props;
     return (
-        <button>
-            <Image src={user} style={{width:'25px', height:'25px'}}/>
+        <button onClick={startRegister}>
+            <Image src={user} style={{ width: '25px', height: '25px' }} />
         </button>
     );
 }

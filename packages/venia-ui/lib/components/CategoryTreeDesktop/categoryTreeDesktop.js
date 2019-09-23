@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { number, objectOf, shape, string } from 'prop-types';
+import { number, shape, string } from 'prop-types';
 import { useQuery } from '@magento/peregrine';
 import { mergeClasses } from '../../classify';
 import MENU_QUERY from '../../queries/getNavigationMenu.graphql';

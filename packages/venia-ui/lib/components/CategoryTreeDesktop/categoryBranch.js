@@ -14,7 +14,7 @@ const Branch = props => {
     if (include_in_menu === 0) {
         return null;
     }
-    const icon = level > 2 ? classes.iconChevronRight : classes.iconChevronDown
+    const icon = level > 2 ? classes.iconAngleRight : classes.iconDownOpenMini
     return (
         <li className={classes.root}>
             <div className={classes.target}>

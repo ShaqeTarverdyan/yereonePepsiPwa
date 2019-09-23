@@ -105,7 +105,7 @@ export const addItemToCart = (payload = {}) => {
             // In the catch clause, this action creator calls its own thunk,
             // so a successful retry will wind up here anyway.
             await dispatch(getCartDetails({ forceRefresh: true }));
-            await dispatch(toggleDrawer('cart'));
+            //await dispatch(toggleDrawer('cart'));
             dispatch(
                 actions.addItem.receive({ cartItem: response, item, quantity })
             );

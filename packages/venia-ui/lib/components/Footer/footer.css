@@ -1,31 +1,59 @@
-.root {
-    background-color: rgb(var(--venia-grey));
-    border-top: 1px solid rgb(var(--venia-border));
-    color: black;
-    margin-top: 1rem;
-    padding: 0 1rem;
-}
-
-.tile {
-    border-bottom: 1px solid rgb(var(--venia-border));
-    padding: 1rem 2rem;
-}
-
-.tileTitle {
-    font-size: 1.25rem;
-    margin: 1rem 0;
-}
-
-.tileBody {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    margin: 1rem 0;
-}
-
-.copyright {
-    display: block;
-    color: rgb(var(--venia-text-alt));
-    font-size: 0.75rem;
-    padding: 1.5rem 2rem;
-    text-align: center;
-}
+  .root {
+    background-color: black;
+    color:white;
+  }
+  .content {
+    max-width: 1500px;
+    margin:0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 400px;
+    padding:20px;
+  }
+  .content ul li {
+    display: flex;
+    line-height: 50px
+  }
+  .content h1 {
+    line-height: 100px
+  }
+  .leftRoot p {
+    padding: 10px 12px;
+  }
+  .leftImg img {
+    width: 30%;
+    height: 30%;
+  }
+  .middleRoot {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .fixedStyle {
+    color: rgb(var(--pepsi-blue));
+    padding-right: 10px;
+  }
+  .iconFacebook:before {
+    font-family: 'Pepsi';
+    content: "\6e";
+  }
+  .iconHome:before {
+    font-family: 'Pepsi';
+    content: "\69";
+    }
+  .iconEnvelope:before {
+    font-family: 'Pepsi';
+    content: "\6a";
+  }
+  .iconPhone:before {
+    
+    font-family: 'Pepsi';
+    content: "\6b";
+  }
+  .iconInstagram:before {
+    font-family: 'Pepsi';
+    content: "\6c";
+  }
+  .iconTwitter:before {
+    font-family: 'Pepsi';
+    content: "\6d";
+  }

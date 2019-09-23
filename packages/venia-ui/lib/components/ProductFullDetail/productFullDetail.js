@@ -94,7 +94,7 @@ const ProductFullDetail = props => {
     );
     const derivedOptionCodes = deriveOptionCodesFromProduct(product);
     const [optionCodes] = useState(derivedOptionCodes);
-
+    
     // Members.
     const { amount: productPrice } = product.price.regularPrice;
     const classes = mergeClasses(defaultClasses, props.classes);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { string, number, shape } from 'prop-types';
 import { Link, resourceUrl } from '@magento/venia-drivers';
+import { string, number, shape, oneOfType, object } from 'prop-types';
+import { connect } from '@magento/venia-drivers';
+import { compose } from 'redux';
 import { Price } from '@magento/peregrine';
 import classify from '../../classify';
 import { transparentPlaceholder } from '../../shared/images';
@@ -41,7 +43,7 @@ class GalleryItem extends Component {
         item: shape({
             id: number.isRequired,
             name: string.isRequired,
-            small_image: string.isRequired,
+            small_image: oneOfType([object, string]).isRequired,
             url_key: string.isRequired,
             price: shape({
                 regularPrice: shape({
@@ -53,10 +55,37 @@ class GalleryItem extends Component {
             }).isRequired
         })
     };
+    constructor(props) {
+        super(props);
+        this.state = {
+            quantity: 1,
+            isAddingToCart: false,
+            isAddedToCart: false
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (
+            prevProps.isAddingItem === true &&
+            this.props.isAddingItem === false &&
+            this.state.isAddingToCart === true
+        ) {
+            this.setState({
+                isAddedToCart: true,
+                isAddingToCart: false
+            });
+            setTimeout(() => {
+                this.setState({
+                    isAddingToCart: false,
+                    isAddedToCart: false
+                })
+            }, 4000);
+        }
+    }
 
     render() {
-        const { classes, item } = this.props;
-
+        const { classes, item, addItemToCart } = this.props;
+        const { quantity, isAddingToCart, isAddedToCart } = this.state;
         if (!item) {
             return (
                 <ItemPlaceholder classes={classes}>
@@ -67,6 +96,21 @@ class GalleryItem extends Component {
 
         const { name, price, url_key } = item;
         const productLink = `/${url_key}${productUrlSuffix}`;
+
+        const handleAddToCart = () => {
+            const payload = {
+                item: item,
+                productType: item.__typename,
+                quantity
+            };
+            if (item.__typename === 'SimpleProduct') {
+                this.setState({
+                    isAddingToCart: true,
+                });
+                return addItemToCart(payload);
+            }
+            return console.log(' please select simple Product');
+        };
 
         return (
             <div className={classes.root}>
@@ -82,6 +126,13 @@ class GalleryItem extends Component {
                         value={price.regularPrice.amount.value}
                         currencyCode={price.regularPrice.amount.currency}
                     />
+                </div>
+                <div className={classes.addToCart}>
+                    <button onClick={handleAddToCart}>
+                        {isAddingToCart && <div>Adding...</div>}
+                        {!isAddingToCart && !isAddedToCart && <div>Add to Cart</div>}
+                        {isAddedToCart && <div>Added</div>}
+                    </button>
                 </div>
             </div>
         );
@@ -117,7 +168,7 @@ class GalleryItem extends Component {
         return (
             <img
                 className={classes.image}
-                src={resourceUrl(small_image, {
+                src={resourceUrl(small_image.url, {
                     type: 'image-product',
                     width: imageWidth,
                     height: imageHeight
@@ -125,9 +176,14 @@ class GalleryItem extends Component {
                 alt={name}
                 width={imageWidth}
                 height={imageHeight}
+                sizes={`${imageWidth}px`}
             />
         );
     };
 }
+const mapStateToProps = ({ cart }) => {
+    const { isAddingItem } = cart;
+    return { isAddingItem };
 
-export default classify(defaultClasses)(GalleryItem);
+}
+export default compose(connect(mapStateToProps)(classify(defaultClasses)(GalleryItem)));

@@ -84,7 +84,6 @@ class CreateAccount extends Component {
                 initialValues={initialValues}
                 onSubmit={handleSubmit}
             >
-                <p className={classes.lead}>{LEAD}</p>
                 <Field label="First Name" required={true}>
                     <TextInput
                         field="customer.firstname"
@@ -142,8 +141,12 @@ class CreateAccount extends Component {
                 <div className={classes.error}>{errorMessage}</div>
                 <div className={classes.actions}>
                     <Button type="submit" priority="high">
-                        {'Submit'}
+                        {'Sign Up'}
                     </Button>
+                    <div>
+                        <span>Already have an account? </span> 
+                        <button>Sign In here</button>
+                    </div>
                 </div>
             </Form>
         );

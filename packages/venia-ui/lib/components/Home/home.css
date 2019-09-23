@@ -1,6 +1,13 @@
-.bannerStyle {
+.staticWidth {
     max-width: 1500px;
     margin: 0 auto;
+}
+.root {
+    display: grid;
+    grid-row-gap: 5%;
+}
+.top {
+    composes: staticWidth;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 10px;
@@ -13,33 +20,57 @@
     grid-template-rows: 1fr auto;
     grid-row-gap: 10px;
 }
-.innerBanner {
+.bannerTop {
     position: relative;
 }
-.buttonStyle {
-    position: absolute;
+.bannerTop button{
     position: absolute;
     top: 80%;
     left: 43%;
-}
-.buttonStyle button{
     color: white;
-    background-color: blue;
+    background-color: #0177DB;
     padding: 10px 20px;
     border: 2px solid white;
     border-radius: 25px;
     font-weight: 600;
 }
-.innerBanners {
+.bannerDown {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap:10px
 }
-.banner_1 {
+.banner1 {
     width: -webkit-fill-available;
     height: 450px;
 }
-.banner_2 {
+.banner2 {
     width: 100%;
     height: 240px;
+}
+
+.features {
+    width: 100%;
+    border-top:1px solid rgb(var(--pepsi-border));
+    border-bottom: 1px solid rgb(var(--pepsi-border));
+}
+.featureContent {
+    composes: staticWidth;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+}
+.productCarousel {
+    text-align: center;
+    margin: 0 auto;
+    width:1500px;
+}
+.productCarousel h1 {
+    line-height: 50px;
+}
+.brands {
+    text-align: center;
+    margin: 0 auto;
+}
+.brands h1 {
+    line-height: 50px;
 }

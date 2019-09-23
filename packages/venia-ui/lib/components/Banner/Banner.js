@@ -18,15 +18,15 @@ const Banner = props => {
 
     return (
         (data != null && data.banner) ?
-        <div className={classes[data.banner.hover_effect]}>
-            <div>
+            <div className={classes[data.banner.hover_effect]}>
+                <div>
                     <img
                         src={data.banner.image}
                         alt='name'
-                        className={`${classes[`banner_${id}`]}`}
+                        className={`${classes[`banner${id}`]}`}
                     />
-            </div>
-        </div> : <div>Data fetching ...</div>
+                </div>
+            </div> : <div>Fetching Banner ... </div>
     );
 }
 export default classify(defaultClasses)(Banner);

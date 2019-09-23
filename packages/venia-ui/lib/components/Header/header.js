@@ -30,7 +30,9 @@ const Header = props => {
         isOnline,
         searchOpen,
         toggleCart,
-        toggleSearch
+        toggleSearch,
+        openSignIn,
+        startRegister
     } = props;
 
     const cartTriggerProps = { cart, getCartDetails, toggleCart };
@@ -67,7 +69,7 @@ const Header = props => {
                         </Suspense>
                     </div>
                     <div className={classes.userTrigger}>
-                        <UserTrigger />
+                        <UserTrigger startRegister={startRegister}/>
                     </div>
                     <div className={classes.cart}>
                         <div className={classes.cartTrigger}>

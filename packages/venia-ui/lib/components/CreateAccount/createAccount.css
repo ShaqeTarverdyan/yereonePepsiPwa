@@ -22,7 +22,20 @@
     justify-items: center;
     margin-top: 1rem;
 }
-
+.actions div {
+    margin-right: auto;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 45px;
+    letter-spacing: 0.04em;
+}
+.actions  div button {
+    font-weight: 700;
+    color: var(--pepsi-blue);
+    text-decoration: underline;
+}
 .error {
     composes: message;
     color: rgb(var(--venia-error));

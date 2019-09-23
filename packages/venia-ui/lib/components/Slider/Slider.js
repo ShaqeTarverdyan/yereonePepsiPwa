@@ -18,7 +18,6 @@ const Slider = props => {
             runQuery({ variables: { id: id } });
         }
     }, []);
-console.log('data', data)
     return (
         (data !== null && data.slider.slides) ?
             <AwesomeSlider 

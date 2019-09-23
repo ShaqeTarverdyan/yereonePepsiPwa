@@ -1,15 +1,16 @@
 .root {
     composes: root from './categoryLeaf.css';
 }
-
 .target {
     composes: target from './categoryLeaf.css';
 }
-
+.target:hover {
+    cursor: pointer;
+    color: rgb(var(--pepsi-blue));
+}
 .text {
     composes: text from './categoryLeaf.css';
 }
-
 .branch {
     display: none;
     position: absolute;
@@ -19,28 +20,20 @@
     top:50px;
     min-width: 200px;
 }
-
 .root:hover > .branch{
     display: block;
     position: absolute;
-}
-.level_2 {
-
 }
 .level_3 {
     top: 0;
     left: 181px;
     width: 300px;
 }
-
-.iconChevronDown:before {
+.iconDownOpenMini:before {
     font-family: var(--pepsi-font-pepsi);
-    content: "\66";
+    content: "\61";
 }
-
-.iconChevronRight:before {
+.iconAngleRight:before {
     font-family: var(--pepsi-font-pepsi);
-    content: "\68";
+    content: "\64";
 }
-
-

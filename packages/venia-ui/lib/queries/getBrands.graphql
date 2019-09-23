@@ -1,0 +1,7 @@
+query brands {
+    brands {
+        id
+        logo
+        profile_image
+    }
+}

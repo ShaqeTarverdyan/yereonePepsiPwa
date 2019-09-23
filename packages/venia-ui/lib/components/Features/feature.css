@@ -1,0 +1,19 @@
+.feature {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-row-gap: 20px;
+    padding: 5% 10%;
+}
+.feature img {
+    width: 70%;
+}
+.feature div {
+    display: grid;
+    align-items: center;
+}
+.feature h3 {
+   font-weight: 300
+}
+.feature p {
+    color: grey;
+}

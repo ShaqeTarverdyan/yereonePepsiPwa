@@ -1,0 +1,21 @@
+.content {
+    width:1500px;
+    display: flex;
+    align-items: center;
+}
+.iconLeft:before {
+    font-family: var(--pepsi-font-pepsi);
+    content: "\63";
+    font-size: xx-large;
+}
+.iconNext:before {
+    font-family: var(--pepsi-font-pepsi);
+    content: "\64";
+    font-size: xx-large;
+}
+.content button {
+    outline: none
+}
+.brand {
+    width: 60%;
+}
