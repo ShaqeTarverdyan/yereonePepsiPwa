@@ -41,9 +41,9 @@ class Tile extends Component {
 
         return (
             <Tooltip text={label}>
-                <button {...restProps} className={className}>
+                <div {...restProps} className={className}>
                     <span>{label}</span>
-                </button>
+                </div>
             </Tooltip>
         );
     }

@@ -35,6 +35,9 @@ query category(
                 url
             }
             url_key
+            new
+            rating_summary
+            reviews_count
             price {
                 regularPrice {
                     amount {

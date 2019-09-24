@@ -42,13 +42,10 @@ class Option extends Component {
 
     render() {
         const { handleSelectionChange, listComponent: ValueList, props } = this;
-        const { classes, label, values } = props;
+        const { classes, values } = props;
 
         return (
             <div className={classes.root}>
-                <h3 className={classes.title}>
-                    <span>{label}</span>
-                </h3>
                 <ValueList
                     getItemKey={getItemKey}
                     items={values}
@@ -58,5 +55,4 @@ class Option extends Component {
         );
     }
 }
-
 export default classify(defaultClasses)(Option);

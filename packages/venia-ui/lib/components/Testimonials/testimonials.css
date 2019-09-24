@@ -1,0 +1,49 @@
+.testimonial {
+    text-align: center;
+
+}
+.image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: auto;
+}
+.image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.text {
+    height: 200px;
+    font-family: Roboto Condensed;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 160%;
+    text-align: center;
+    letter-spacing: 0.04em;
+    color: #5C5C5C;
+    padding: 40px 10px;
+}
+
+.name {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+.position {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #5C5C5C;
+
+}

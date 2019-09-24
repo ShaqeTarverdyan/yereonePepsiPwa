@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Link, resourceUrl } from '@magento/venia-drivers';
 import { string, number, shape, oneOfType, object } from 'prop-types';
 import { connect } from '@magento/venia-drivers';
@@ -7,12 +7,52 @@ import { Price } from '@magento/peregrine';
 import classify from '../../classify';
 import { transparentPlaceholder } from '../../shared/images';
 import defaultClasses from './item.css';
+import { fullPageLoadingIndicator } from '../LoadingIndicator';
+const Options = React.lazy(() => import('../ProductOptions'));
+import appendOptionsToPayload from '../../util/appendOptionsToPayload';
+import isProductConfigurable from '../../util/isProductConfigurable';
+import Review from '../Review';
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
 const imageWidth = '300';
 const imageHeight = '375';
 
+
+const INITIAL_OPTION_CODES = new Map();
+const INITIAL_OPTION_SELECTIONS = new Map();
+
+const deriveOptionCodesFromProduct = item => {
+    // If this is a simple product it has no option codes.
+    if (!isProductConfigurable(item)) {
+        return INITIAL_OPTION_CODES;
+    }
+
+    // Initialize optionCodes based on the options of the product.
+    const initialOptionCodes = new Map();
+    for (const {
+        attribute_id,
+        attribute_code
+    } of item.configurable_options) {
+        initialOptionCodes.set(attribute_id, attribute_code);
+    }
+
+    return initialOptionCodes;
+};
+
+const getIsMissingOptions = (product, optionSelections) => {
+    // Non-configurable products can't be missing options.
+    if (!isProductConfigurable(product)) {
+        return false;
+    }
+
+    // Configurable products are missing options if we have fewer
+    // option selections than the product has options.
+    const { configurable_options } = product;
+    const numProductOptions = (typeof (configurable_options) != 'undefined') ? configurable_options.length : null
+    const numProductSelections = optionSelections.size;
+    return numProductSelections < numProductOptions;
+};
 const ItemPlaceholder = ({ children, classes }) => (
     <div className={classes.root_pending}>
         <div className={classes.images_pending}>{children}</div>
@@ -60,7 +100,10 @@ class GalleryItem extends Component {
         this.state = {
             quantity: 1,
             isAddingToCart: false,
-            isAddedToCart: false
+            isAddedToCart: false,
+            optionSelections: INITIAL_OPTION_SELECTIONS,
+            optionCodes: null
+
         }
     }
 
@@ -82,10 +125,21 @@ class GalleryItem extends Component {
             }, 4000);
         }
     }
+    optionCodes = () => {
+        this.setState({ optionCodes: deriveOptionCodesFromProduct(this.props.item) })
+    }
 
     render() {
         const { classes, item, addItemToCart } = this.props;
-        const { quantity, isAddingToCart, isAddedToCart } = this.state;
+        const { quantity, isAddingToCart, isAddedToCart, optionSelections } = this.state;
+        const isMissingOptions = getIsMissingOptions(item, optionSelections);
+        const handleSelectionChange = (optionId, selection) => {
+            // We must create a new Map here so that React knows that the value
+            // of optionSelections has changed.
+            const newOptionSelections = new Map([...optionSelections]);
+            newOptionSelections.set(optionId, Array.from(selection).pop());
+            this.setState({ optionSelections: newOptionSelections });
+        };
         if (!item) {
             return (
                 <ItemPlaceholder classes={classes}>
@@ -93,46 +147,67 @@ class GalleryItem extends Component {
                 </ItemPlaceholder>
             );
         }
-
-        const { name, price, url_key } = item;
+        const { name, price, url_key, reviews_count, rating_summary } = item;
         const productLink = `/${url_key}${productUrlSuffix}`;
-
+        const newItem = item && item.new === 1 ? <div className={classes.newItem}>New</div> : <div></div>
         const handleAddToCart = () => {
             const payload = {
                 item: item,
                 productType: item.__typename,
                 quantity
             };
-            if (item.__typename === 'SimpleProduct') {
-                this.setState({
-                    isAddingToCart: true,
-                });
-                return addItemToCart(payload);
-            }
-            return console.log(' please select simple Product');
-        };
 
+            this.setState({
+                isAddingToCart: true,
+            });
+
+
+            if (isProductConfigurable(item)) {
+                appendOptionsToPayload(payload, this.state.optionSelections, this.optionCode);
+            }
+            return addItemToCart(payload);
+        };
         return (
             <div className={classes.root}>
                 <Link to={resourceUrl(productLink)} className={classes.images}>
                     {this.renderImagePlaceholder()}
                     {this.renderImage()}
                 </Link>
-                <Link to={resourceUrl(productLink)} className={classes.name}>
-                    <span>{name}</span>
-                </Link>
-                <div className={classes.price}>
-                    <Price
-                        value={price.regularPrice.amount.value}
-                        currencyCode={price.regularPrice.amount.currency}
-                    />
+                <div className={classes.content}>
+                    <div className={classes.review}>
+                        <Review
+                            review={reviews_count}
+                            ratingSummary={rating_summary}
+                        />
+                    </div>
+                    <Link to={resourceUrl(productLink)} className={classes.name}>
+                        <span>{name}</span>
+                    </Link>
+                    <div className={classes.price}>
+                        <Price
+                            value={price.regularPrice.amount.value}
+                            currencyCode={price.regularPrice.amount.currency}
+                        />
+                    </div>
+                    <div>
+                        <Suspense fallback={fullPageLoadingIndicator}>
+                            <Options
+                                onSelectionChange={handleSelectionChange}
+                                product={item}
+                            />
+                        </Suspense>
+                    </div>
                 </div>
+
                 <div className={classes.addToCart}>
-                    <button onClick={handleAddToCart}>
+                    <button onClick={handleAddToCart} disabled={isMissingOptions}>
                         {isAddingToCart && <div>Adding...</div>}
                         {!isAddingToCart && !isAddedToCart && <div>Add to Cart</div>}
                         {isAddedToCart && <div>Added</div>}
                     </button>
+                </div>
+                <div className={classes.newPosition}>
+                    {newItem}
                 </div>
             </div>
         );
@@ -168,7 +243,7 @@ class GalleryItem extends Component {
         return (
             <img
                 className={classes.image}
-                src={resourceUrl(small_image.url, {
+                src={resourceUrl(small_image, {
                     type: 'image-product',
                     width: imageWidth,
                     height: imageHeight

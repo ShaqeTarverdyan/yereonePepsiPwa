@@ -38,6 +38,14 @@ const ProductCarousel = props => {
         }
         return <div>Data Fetch Error</div>;
     }
+    const mapGalleryItem = (item) => {
+        const { small_image } = item;
+        return {
+            ...item,
+            small_image:
+                typeof small_image === 'object' ? small_image.url : small_image
+        };
+    }
 
     const ref = createRef();
     return data && typeof (data.products.items) != 'undefined' ? (
@@ -56,8 +64,8 @@ const ProductCarousel = props => {
                     data.products.items.map(product =>
                         <div className={classes.product} key={product.id} >
                             <GalleryItem
-                                item={product}
-                                addItemToCart={addItemToCart}  
+                                item={mapGalleryItem(product)}
+                                addItemToCart={addItemToCart}
                             />
                         </div>
                     )

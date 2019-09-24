@@ -33,14 +33,8 @@ class Swatch extends Component {
         isSelected: false
     };
 
-    get icon() {
-        const { isSelected } = this.props;
-
-        return isSelected ? <Icon src={CheckIcon} /> : null;
-    }
-
     render() {
-        const { icon, props } = this;
+        const { props } = this;
         const {
             classes,
             hasFocus,
@@ -51,7 +45,7 @@ class Swatch extends Component {
             style,
             ...restProps
         } = props;
-
+        const selectedClass = isSelected ? classes.wrappedDiv : null
         const className = classes[getClassName('root', isSelected, hasFocus)];
         const { label, value_index } = item;
 
@@ -59,7 +53,6 @@ class Swatch extends Component {
         //   https://github.com/magento/graphql-ce/issues/196
         //   https://github.com/magento/pwa-studio/issues/1633
         const randomColor = memoizedGetRandomColor(value_index);
-
         // We really want to avoid specifying presentation within JS.
         // Swatches are unusual in that their color is data, not presentation,
         // but applying color *is* presentational.
@@ -71,14 +64,16 @@ class Swatch extends Component {
 
         return (
             <Tooltip text={label}>
-                <button
-                    {...restProps}
-                    className={className}
-                    style={finalStyle}
-                    title={label}
-                >
-                    {icon}
-                </button>
+                <div className={selectedClass}>
+                    <div 
+                        {...restProps}
+                        className={className}
+                        style={finalStyle}
+                        title={label}
+                    />
+                </div>
+
+
             </Tooltip>
         );
     }

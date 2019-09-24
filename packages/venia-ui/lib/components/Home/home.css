@@ -60,17 +60,23 @@
 
 }
 .productCarousel {
-    text-align: center;
     margin: 0 auto;
-    width:1500px;
+    width: 1500px;
+    text-align: center;
 }
 .productCarousel h1 {
     line-height: 50px;
 }
 .brands {
+    width: 1500px;
     text-align: center;
     margin: 0 auto;
+    padding: 3px;
 }
 .brands h1 {
     line-height: 50px;
+}
+.testimonials {
+    width: 1500px;
+    margin: 0 auto;
 }

@@ -1,0 +1,16 @@
+.root {
+    line-height: 35px;
+}
+.rating_box {
+    width: 66px;
+    height: 13px;
+    font-size: 0;
+    line-height: 0;
+    background: url('./images/star_unfilled.png') 0 0 repeat-x;
+    overflow: hidden;
+}
+.rating {
+    width: 66px;
+    height: 13px;
+    background: url('./images/star_filled.png') 0 100% repeat-x;
+}

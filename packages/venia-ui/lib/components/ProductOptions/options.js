@@ -29,13 +29,13 @@ class Options extends Component {
         }
 
         const { configurable_options } = product;
-        return configurable_options.map(option => (
+        return configurable_options && typeof (configurable_options) != 'undefined' ? configurable_options.map(option => (
             <Option
                 {...option}
                 key={option.attribute_id}
                 onSelectionChange={handleSelectionChange}
             />
-        ));
+        )) : null;
     }
 }
 

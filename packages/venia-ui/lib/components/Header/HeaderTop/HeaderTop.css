@@ -15,4 +15,9 @@
 .text {
     flex: auto;
     color: rgb(var(--pepsi-red));
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.06em;
 }

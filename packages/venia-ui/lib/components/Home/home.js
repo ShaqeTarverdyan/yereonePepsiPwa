@@ -6,6 +6,7 @@ import Slider from '../Slider';
 import Features from '../Features';
 import Brands from '../Brands';
 import ProductCarousel from '../ProductCarousel';
+import Testimonials from '../Testimonials';
 
 const Home = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -40,9 +41,21 @@ const Home = props => {
                     item={4}
                 />
             </div>
+            <div className={classes.productCarousel}>
+                <h1>CONFIGURABLE PRODUCTS</h1>
+                <ProductCarousel
+                    id={12}
+                    pageSize={6}
+                    currentPage={1}
+                    item={4}
+                />
+            </div>
             <div className={classes.brands}>
                 <h1>PRODUCT BRANDS</h1>
                 <Brands />
+            </div>
+            <div className={classes.testimonials}>
+                <Testimonials />
             </div>
         </div>
     );

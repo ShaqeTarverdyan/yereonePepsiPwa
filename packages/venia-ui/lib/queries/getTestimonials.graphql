@@ -1,0 +1,12 @@
+query testimonials {
+    testimonials {
+        items {
+          id
+          author
+          job
+          testimonial_content
+          image
+          flag
+        }
+    }
+}
