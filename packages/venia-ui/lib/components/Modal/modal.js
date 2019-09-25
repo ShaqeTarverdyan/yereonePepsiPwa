@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { node, object } from 'prop-types';
 
-const Modal = ({ children, container }) => {
+const Modal = ({ children, container, isMobile }) => {
     const target = useMemo(
         () =>
             container instanceof HTMLElement
@@ -10,8 +10,8 @@ const Modal = ({ children, container }) => {
                 : document.getElementById('root'),
         [container]
     );
-
-    return createPortal(children, target);
+    const shownOption = isMobile ? createPortal(children, target) : children
+    return shownOption;
 };
 
 export default Modal;

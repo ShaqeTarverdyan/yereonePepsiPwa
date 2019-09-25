@@ -1,7 +1,20 @@
+.rootFilterModal {
+    background-color: white;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    transform: translate3d(0, 0, 0);
+}
 .root {
     padding: 1rem;
+    max-width: 1500px;
+    margin:0 auto;
 }
-
+.content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-column-gap: 2%;
+}
 .title {
     font-size: 1.5rem;
     font-weight: 400;
@@ -41,4 +54,16 @@
     font-weight: 300;
     line-height: 1.375rem;
     text-align: center;
+}
+@media (max-width: 600px) {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 1024px) {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }

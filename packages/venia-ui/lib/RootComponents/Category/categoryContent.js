@@ -7,6 +7,7 @@ import FilterModal from '../../components/FilterModal';
 import Gallery from '../../components/Gallery';
 import Pagination from '../../components/Pagination';
 import defaultClasses from './category.css';
+import { useWindowSize } from '@magento/peregrine';
 
 const CategoryContent = props => {
     const { data, openDrawer, pageControl, pageSize } = props;
@@ -15,7 +16,10 @@ const CategoryContent = props => {
     const items = data ? data.products.items : null;
     const title = data ? data.category.name : null;
     const titleContent = title ? `${title} - Venia` : 'Venia';
-
+    
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.innerWidth <= 600;
+    const isDesktop = windowSize.innerWidth >= 600;
     const header = filters ? (
         <div className={classes.headerButtons}>
             <button
@@ -29,6 +33,7 @@ const CategoryContent = props => {
     ) : null;
 
     const modal = filters ? <FilterModal filters={filters} /> : null;
+    const modalDesktop = isDesktop && filters ? <FilterModal filters={filters} classes={classes} isMobile={isMobile}/> : null;
     return (
         <Fragment>
             <Title>{titleContent}</Title>
@@ -36,12 +41,17 @@ const CategoryContent = props => {
                 <h1 className={classes.title}>
                     <div className={classes.categoryTitle}>{title}</div>
                 </h1>
-                {header}
-                <section className={classes.gallery}>
-                    <Gallery data={items} pageSize={pageSize} />
-                </section>
-                <div className={classes.pagination}>
-                    <Pagination pageControl={pageControl} />
+                {isMobile ? header : null}
+                <div className={classes.content}>
+                    <div>  {modalDesktop}</div>
+                    <div>
+                        <section className={classes.gallery}>
+                            <Gallery data={items} pageSize={pageSize} />
+                        </section>
+                        <div className={classes.pagination}>
+                            <Pagination pageControl={pageControl} />
+                        </div>
+                    </div>
                 </div>
                 {modal}
             </article>

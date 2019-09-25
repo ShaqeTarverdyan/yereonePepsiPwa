@@ -1,4 +1,4 @@
-.root {
+.rootFilterModal {
     position: fixed;
     left: 0;
     bottom: 0;
@@ -19,8 +19,8 @@
     width: 100%;
 }
 
-.rootOpen {
-    composes: root;
+.rootFilterModalOpen {
+    composes: rootFilterModal;
     box-shadow: 1px 0 rgb(var(--venia-border));
     opacity: 1;
     transform: translate3d(0, 0, 0);

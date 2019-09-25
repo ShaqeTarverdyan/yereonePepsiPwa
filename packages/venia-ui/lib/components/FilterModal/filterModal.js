@@ -37,14 +37,14 @@ class FilterModal extends Component {
             this.props.setToApplied();
         }
     }
-
+    
     render() {
-        const { classes, drawer, closeDrawer } = this.props;
+        const { classes, drawer, closeDrawer, isMobile } = this.props;
         const modalClass =
-            drawer === 'filter' ? classes.rootOpen : classes.root;
+            drawer === 'filter' ? classes.rootFilterModalOpen : classes.rootFilterModal;
 
         return (
-            <Modal>
+            <Modal isMobile={isMobile}>
                 <aside className={modalClass}>
                     <div className={classes.modalWrapper}>
                         <div className={classes.header}>
