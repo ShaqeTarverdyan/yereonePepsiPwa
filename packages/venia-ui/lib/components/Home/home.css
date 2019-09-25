@@ -39,11 +39,11 @@
     grid-template-columns: 1fr 1fr;
     grid-gap:10px
 }
-.banner1 {
+.banner5 {
     width: -webkit-fill-available;
     height: 450px;
 }
-.banner2 {
+.banner3, .banner4 {
     width: 100%;
     height: 240px;
 }

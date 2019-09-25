@@ -18,12 +18,12 @@ const Home = props => {
                 </div>
                 <div className={classes.banner}>
                     <div className={classes.bannerTop}>
-                        <Banner id={1} classes={defaultClasses} />
+                        <Banner id={5} classes={defaultClasses} />
                         <button>Buy Now</button>
                     </div>
                     <div className={classes.bannerDown}>
-                        <Banner id={2} classes={defaultClasses} />
-                        <Banner id={2} classes={defaultClasses} />
+                        <Banner id={4} classes={defaultClasses} />
+                        <Banner id={3} classes={defaultClasses} />
                     </div>
                 </div>
             </div>

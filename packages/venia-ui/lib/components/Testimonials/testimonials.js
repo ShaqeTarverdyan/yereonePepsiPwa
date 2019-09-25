@@ -31,7 +31,7 @@ const Testimonials = props => {
                         >
                             {
                                 data && typeof (items) != 'undefined' ? items.map(item =>
-                                    <div className={classes.testimonial}>
+                                    <div className={classes.testimonial} key={item.id}>
                                         <div className={classes.image}>
                                             <img src={item.image} alt={item.author} />
                                         </div>

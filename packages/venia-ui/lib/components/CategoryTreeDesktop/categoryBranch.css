@@ -1,5 +1,6 @@
 .root {
     composes: root from './categoryLeaf.css';
+    position: relative;
 }
 .target {
     composes: target from './categoryLeaf.css';
@@ -36,4 +37,27 @@
 .iconAngleRight:before {
     font-family: var(--pepsi-font-pepsi);
     content: "\64";
+}
+.label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 32px;
+    height: 16px;
+    color: white;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    text-align: center;
+}
+.labelSale {
+    composes: label;
+    background-color: red;
+
+}
+.labelNew {
+    composes: label;
+    background-color: green;
 }

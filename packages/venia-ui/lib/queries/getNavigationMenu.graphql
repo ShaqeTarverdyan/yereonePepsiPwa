@@ -8,6 +8,7 @@ query navigationMenu($id: Int!) {
       include_in_menu
       name
       position
+      label
       level
       url_key
       url_path

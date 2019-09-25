@@ -1,6 +1,10 @@
 .root {
-    position: relative;
-   
+    position: relative;  
+    
+}
+.content {
+    text-align: left;
+    padding: 10px 12px;
 }
 .images {
     position: relative;
@@ -31,15 +35,24 @@
 
 .imagePlaceholder {
     composes: image;
-    background-color: rgb(var(--venia-grey));
 }
 
-.name,
+.name {
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 45px;
+    letter-spacing: 0.02em;
+}
 .price {
-    font-size: 0.875rem;
-    line-height: 1rem;
-    margin: 0.5rem 0;
-    min-height: 1rem;
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.02em;
+    color: #0177DB;
 }
 
 /* state: pending */
@@ -107,4 +120,14 @@
     vertical-align: middle;
     justify-content: center;
     margin-left: 2px;
+  }
+  .newItem {
+    position: absolute;
+    width: 45px;
+    height: 18px;
+    background: #20B619;
+    color: white;
+    text-align: center;
+    top: 10px;
+    left: 10px;
   }
