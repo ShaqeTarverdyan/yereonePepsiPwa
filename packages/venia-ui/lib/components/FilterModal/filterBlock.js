@@ -31,7 +31,7 @@ class FilterBlock extends Component {
     };
 
     state = {
-        isExpanded: false
+        isExpanded: true
     };
 
     optionToggle = () => {
@@ -53,9 +53,9 @@ class FilterBlock extends Component {
                     className={classes.optionToggleButton}
                 >
                     <span className={nameClass}>{item.name}</span>
-                    <span className={classes.closeWrapper}>
+                    {/* <span className={classes.closeWrapper}>
                         <Icon src={iconSrc} />
-                    </span>
+                    </span> */}
                 </button>
             </div>
         );

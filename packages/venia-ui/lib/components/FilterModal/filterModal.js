@@ -37,48 +37,46 @@ class FilterModal extends Component {
             this.props.setToApplied();
         }
     }
-    
+
     render() {
         const { classes, drawer, closeDrawer, isMobile } = this.props;
-        const modalClass =
-            drawer === 'filter' ? classes.rootFilterModalOpen : classes.rootFilterModal;
+        const modalClassMobile = drawer === 'filter' ? classes.rootFilterModalOpen : classes.rootFilterModal;
+        const modalClass = isMobile ? modalClassMobile : classes.rootFilterDesktop;
+        const filterContent = 
+        <aside className={modalClass}>
+            <div className={classes.modalWrapper}>
+                <div className={classes.header}>
+                    <span className={classes.headerTitle}>
+                        FILTER BY
+                    </span>
+                    <button onClick={closeDrawer}>
+                        <Icon src={CloseIcon} />
+                    </button>
+                </div>
 
-        return (
-            <Modal isMobile={isMobile}>
-                <aside className={modalClass}>
-                    <div className={classes.modalWrapper}>
-                        <div className={classes.header}>
-                            <span className={classes.headerTitle}>
-                                FILTER BY
-                            </span>
-                            <button onClick={closeDrawer}>
-                                <Icon src={CloseIcon} />
-                            </button>
-                        </div>
+                <FiltersCurrent keyPrefix="modal" />
 
-                        <FiltersCurrent keyPrefix="modal" />
-
-                        <List
-                            items={this.props.filters}
-                            getItemKey={({ request_var }) => request_var}
-                            render={props => (
-                                <ul className={classes.filterOptionsContainer}>
-                                    {props.children}
-                                </ul>
-                            )}
-                            renderItem={props => (
-                                <FilterBlock
-                                    item={props.item}
-                                    addFilter={this.props.addFilter}
-                                    removeFilter={this.props.removeFilter}
-                                />
-                            )}
+                <List
+                    items={this.props.filters}
+                    getItemKey={({ request_var }) => request_var}
+                    render={props => (
+                        <ul className={classes.filterOptionsContainer}>
+                            {props.children}
+                        </ul>
+                    )}
+                    renderItem={props => (
+                        <FilterBlock
+                            item={props.item}
+                            addFilter={this.props.addFilter}
+                            removeFilter={this.props.removeFilter}
                         />
-                    </div>
-                    <FilterFooter />
-                </aside>
-            </Modal>
-        );
+                    )}
+                />
+            </div>
+            <FilterFooter />
+        </aside>;
+        
+        return ( isMobile ? <Modal>{filterContent}</Modal> : filterContent );
     }
 }
 

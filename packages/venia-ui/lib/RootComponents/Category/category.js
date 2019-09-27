@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { number, shape, string } from 'prop-types';
 import { usePagination, useQuery } from '@magento/peregrine';
 
@@ -36,6 +36,13 @@ const Category = props => {
     const [queryResult, queryApi] = useQuery(categoryQuery);
     const { data, error, loading } = queryResult;
     const { runQuery, setLoading } = queryApi;
+ 
+
+    const [ sortedValue, setSortedValue ] = useState({ name : 'ASC'});
+
+    const handleSortedChange = useCallback((value) => {
+        setSortedValue({[value]: 'ASC'})
+    },[]);
 
     // clear any stale filters
     useEffect(() => {
@@ -53,16 +60,17 @@ const Category = props => {
                 id: Number(id),
                 idString: String(id),
                 onServer: false,
-                pageSize: Number(pageSize)
+                pageSize: Number(pageSize),
+                sortBy: sortedValue
             }
         });
-
+        
         window.scrollTo({
             left: 0,
             top: 0,
             behavior: 'smooth'
         });
-    }, [currentPage, id, pageSize, runQuery, setLoading]);
+    }, [currentPage, id, pageSize, runQuery, setLoading, sortedValue]);
 
     const totalPagesFromData = data
         ? data.products.page_info.total_pages
@@ -95,15 +103,17 @@ const Category = props => {
         return fullPageLoadingIndicator;
     }
 
-    return (
-        <CategoryContent
+
+    return data && typeof data != 'undefined' ? 
+       ( <CategoryContent
             classes={classes}
-            data={loading ? null : data}
+            data={data}
             filterClear={filterClear}
             openDrawer={openDrawer}
             pageControl={pageControl}
+            handleSortedChange = {handleSortedChange}
         />
-    );
+    ): fullPageLoadingIndicator
 };
 
 Category.propTypes = {

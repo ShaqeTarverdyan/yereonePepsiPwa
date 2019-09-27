@@ -28,7 +28,12 @@
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
     visibility: visible;
 }
-
+.rootFilterDesktop {
+    background-color: white;
+    display: grid;
+    grid-template-rows: min-content 1fr;
+    transform: translate3d(0, 0, 0);
+}
 .modalWrapper {
     overflow: auto;
     max-height: 100vh;

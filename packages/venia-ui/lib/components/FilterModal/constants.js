@@ -1,6 +1,6 @@
 export const filterModes = {
+    swatch: 'swatch',
     default: 'default',
-    swatch: 'swatch'
 };
 
 export const filterLayouts = {
@@ -19,5 +19,12 @@ export const filterRenderOptions = {
     default: {
         mode: filterModes.default,
         options: {}
+    },
+    color: {
+        mode: filterModes.swatch,
+        options: {
+            layout: filterLayouts.grid,
+            searchable: false
+        }
     }
 };
