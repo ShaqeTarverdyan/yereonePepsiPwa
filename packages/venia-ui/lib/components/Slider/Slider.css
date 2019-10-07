@@ -1,3 +1,71 @@
 .slideStyle  {
-    height: 700px
+    width: 700px;
+    height: 700px;
+    position: relative;
+}
+
+.leftIcon::before {
+    font-family: "Pepsi";
+    content: "\63";
+    padding:30px;
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.8);
+}
+.rigthIcon::before {
+    font-family: "Pepsi";
+    content: "\64";
+    padding:30px;
+    font-size: 30px;
+    background: rgba(255, 255, 255, 0.8);
+}
+.buttonGroup {
+    width: 96%;
+    bottom: 45%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.buttonGroup  button {
+    outline: none;
+}
+.text {
+    font-family: 'RobotoCondensed';
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+.notVisible .title{
+    transform: translate3d(-300px, 0, 0);
+    opacity: 0;
+}
+.notVisible .shop {
+    transform: translate3d(300px, 0, 0);
+    opacity: 0;
+}
+.visible .title{
+    margin-top: 20px;
+    color: white;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 45px;
+    letter-spacing: 3px;
+    opacity: 1;
+    transition: transform 1s cubic-bezier(0.15, 0.3, 0.15, 1),opacity 1s ease-out;
+}
+.visible .shop {
+    color: white;
+    position: relative;
+    right: 19px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: 3px;
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    transition: transform 1s cubic-bezier(0.15, 0.3, 0.15, 1),opacity 1s ease-out;
 }

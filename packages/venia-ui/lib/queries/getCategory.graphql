@@ -28,6 +28,12 @@ query category(
             filter_items {
                 label
                 value_string
+                ... on SwatchLayerFilterItemInterface {
+                    swatch_data {
+                        type
+                        value
+                    }
+                }
             }
         }
         sort_fields {

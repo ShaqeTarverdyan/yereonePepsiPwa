@@ -14,7 +14,7 @@ const Home = props => {
         <div className={classes.root}>
             <div className={classes.top}>
                 <div className={classes.slide}>
-                    <Slider id={2} />
+                    <Slider id={3} />
                 </div>
                 <div className={classes.banner}>
                     <div className={classes.bannerTop}>
@@ -38,7 +38,6 @@ const Home = props => {
                     id={6}
                     pageSize={6}
                     currentPage={1}
-                    item={4}
                 />
             </div>
             <div className={classes.productCarousel}>
@@ -47,7 +46,6 @@ const Home = props => {
                     id={12}
                     pageSize={6}
                     currentPage={1}
-                    item={4}
                 />
             </div>
             <div className={classes.brands}>
@@ -55,6 +53,7 @@ const Home = props => {
                 <Brands />
             </div>
             <div className={classes.testimonials}>
+                <h1>Testimonials</h1>
                 <Testimonials />
             </div>
         </div>

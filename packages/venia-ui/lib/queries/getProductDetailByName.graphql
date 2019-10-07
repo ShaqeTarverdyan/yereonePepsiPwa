@@ -17,6 +17,10 @@ query productDetailByName($name: String, $onServer: Boolean!) {
                         store_label
                         use_default_value
                         value_index
+                        swatch_data {
+                            type
+                            value
+                        }
                     }
                 }
                 variants {

@@ -7,83 +7,74 @@ import {
     ChevronRight as ChevronRightIcon
 } from 'react-feather';
 import { mergeClasses } from '../../classify';
-import Thumbnail from './thumbnail';
 import defaultClasses from './carousel.css';
 import { transparentPlaceholder } from '../../shared/images';
-import Icon from '../Icon';
-import Image from '../Image';
-import Button from '../Button';
+
 
 const DEFAULT_IMAGE_WIDTH = 640;
-const DEFAULT_IMAGE_HEIGHT = 800;
+const DEFAULT_IMAGE_HEIGHT = 600;
+
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image, Dot, DotGroup, ImageWithZoom } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const Carousel = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
-
-    const [carouselState, carouselApi] = useCarousel(props.images);
-    const { activeItemIndex, sortedImages } = carouselState;
-    const { handlePrevious, handleNext, setActiveItemIndex } = carouselApi;
-
-    const handleThumbnailClick = useCallback(
-        index => {
-            setActiveItemIndex(index);
-        },
-        [setActiveItemIndex]
-    );
-
-    const currentImage = sortedImages[activeItemIndex] || {};
-
-    const src = currentImage.file
-        ? resourceUrl(currentImage.file, {
-              type: 'image-product',
-              width: DEFAULT_IMAGE_WIDTH,
-              height: DEFAULT_IMAGE_HEIGHT
-          })
-        : transparentPlaceholder;
-
-    const alt = currentImage.label || 'image-product';
-
-    const thumbnails = useMemo(
-        () =>
-            sortedImages.map((item, index) => (
-                <Thumbnail
-                    key={`${item.file}--${item.label}`}
-                    item={item}
-                    itemIndex={index}
-                    isActive={activeItemIndex === index}
-                    onClickHandler={handleThumbnailClick}
-                />
-            )),
-        [activeItemIndex, handleThumbnailClick, sortedImages]
-    );
-
+    const { images } = props;
     return (
         <div className={classes.root}>
             <div className={classes.imageContainer}>
-                <Button
-                    classes={{
-                        root_normalPriority: classes.previousButton
-                    }}
-                    onClick={handlePrevious}
+
+                <CarouselProvider
+                    naturalSlideWidth={100}
+                    naturalSlideHeight={125}
+                    totalSlides={images.length}
+                    touchEnabled
+                    dragEnabled
+                    visibleSlides={1}
+                    hasMasterSpinner={true}
+                    orientation="horizontal"
+                    className={classes.carouselProvider}
                 >
-                    <Icon src={ChevronLeftIcon} size={40} />
-                </Button>
-                <Image
-                    classes={{ root: classes.currentImage }}
-                    src={src}
-                    alt={alt}
-                    placeholder={transparentPlaceholder}
-                />
-                <Button
-                    classes={{
-                        root_normalPriority: classes.nextButton
-                    }}
-                    onClick={handleNext}
-                >
-                    <Icon src={ChevronRightIcon} size={40} />
-                </Button>
+                    <Slider className={classes.slider}>
+                        {
+                            images.map((image, index) =>
+                                <Slide index={index} key={index}>
+                                    <ImageWithZoom
+                                        src={resourceUrl(image.file, {
+                                            type: 'image-product',
+                                            width: DEFAULT_IMAGE_WIDTH,
+                                            height: DEFAULT_IMAGE_HEIGHT
+                                        })}
+                                        alt='productImage'
+                                        // hasMasterSpinner
+                                    />
+                                </Slide>
+                            )
+                        }
+                    </Slider>
+                    <div className={classes.thumbnails}>
+                        {
+                            images.map((image, index) =>
+                                <Dot
+                                    key={index}
+                                    children={<Image src={resourceUrl(image.file, {
+                                        type: 'image-product',
+                                        width: 100,
+                                        height: 140
+                                    })} />}
+                                    slide={index}
+                                    className={classes.thumbnail}
+                                />
+                            )
+                        }
+                    </div>
+
+                    <div className={classes.buttonGroup}>
+                        <ButtonBack className={classes.leftIcon} />
+                        <ButtonNext className={classes.rigthIcon} />
+                    </div>
+                </CarouselProvider>
             </div>
-            <div className={classes.thumbnailList}>{thumbnails}</div>
         </div>
     );
 };

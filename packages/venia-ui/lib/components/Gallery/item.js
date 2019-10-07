@@ -11,7 +11,7 @@ import { fullPageLoadingIndicator } from '../LoadingIndicator';
 const Options = React.lazy(() => import('../ProductOptions'));
 import appendOptionsToPayload from '../../util/appendOptionsToPayload';
 import isProductConfigurable from '../../util/isProductConfigurable';
-import Review from '../Review';
+import Rating from '../Rating';
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
@@ -147,7 +147,7 @@ class GalleryItem extends Component {
                 </ItemPlaceholder>
             );
         }
-        const { name, price, url_key, reviews_count, rating_summary } = item;
+        const { name, price, url_key, rating_summary } = item;
         const productLink = `/${url_key}${productUrlSuffix}`;
         const newItem = item && item.new === 1 ? <div className={classes.newItem}>New</div> : <div></div>
         const handleAddToCart = () => {
@@ -174,9 +174,8 @@ class GalleryItem extends Component {
                     {this.renderImage()}
                 </Link>
                 <div className={classes.content}>
-                    <div className={classes.review}>
-                        <Review
-                            review={reviews_count}
+                    <div >
+                        <Rating
                             ratingSummary={rating_summary}
                         />
                     </div>

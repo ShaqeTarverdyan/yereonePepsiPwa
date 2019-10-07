@@ -2,13 +2,10 @@ import React, { Component } from 'react';
 import { bool, number, object, oneOfType, shape, string } from 'prop-types';
 
 import classify from '../../classify';
-import Icon from '../Icon';
 import Tooltip from './toolTip';
-import { Check as CheckIcon } from 'react-feather';
 
 import defaultClasses from './swatch.css';
 
-import { memoizedGetRandomColor } from '../../util/getRandomColor';
 
 const getClassName = (name, isSelected, hasFocus) =>
     `${name}${isSelected ? '_selected' : ''}${hasFocus ? '_focused' : ''}`;
@@ -42,33 +39,23 @@ class Swatch extends Component {
             item,
             // eslint-disable-next-line
             itemIndex,
-            style,
             ...restProps
         } = props;
         const selectedClass = isSelected ? classes.wrappedDiv : null
         const className = classes[getClassName('root', isSelected, hasFocus)];
-        const { label, value_index } = item;
+        const { label, swatch_data } = item;
 
-        // TODO: use the colors from graphQL when they become available.
-        //   https://github.com/magento/graphql-ce/issues/196
-        //   https://github.com/magento/pwa-studio/issues/1633
-        const randomColor = memoizedGetRandomColor(value_index);
-        // We really want to avoid specifying presentation within JS.
-        // Swatches are unusual in that their color is data, not presentation,
-        // but applying color *is* presentational.
-        // So we merely provide the color data here, and let the CSS decide
-        // how to use that color (e.g., background, border).
-        const finalStyle = Object.assign({}, style, {
-            '--venia-swatch-bg': randomColor
-        });
 
+        const colorStyle = {
+            backgroundColor: swatch_data.value
+        }
         return (
             <Tooltip text={label}>
                 <div className={selectedClass}>
                     <div 
                         {...restProps}
                         className={className}
-                        style={finalStyle}
+                        style={colorStyle}
                         title={label}
                     />
                 </div>

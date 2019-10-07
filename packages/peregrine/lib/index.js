@@ -8,6 +8,7 @@ export { useCarousel } from './hooks/useCarousel';
 export { useDropdown } from './hooks/useDropdown';
 export { usePagination } from './hooks/usePagination';
 export { useQuery } from './hooks/useQuery';
+export { useMutation } from './hooks/useMutation';
 export { useQueryResult } from './hooks/useQueryResult';
 export { useRestApi } from './hooks/useRestApi';
 export { useRestResponse } from './hooks/useRestResponse';

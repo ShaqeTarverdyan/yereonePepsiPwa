@@ -5,7 +5,7 @@ import Pagination from '../../components/Pagination';
 
 
 
-const ToolBar = props => {
+const Toolbar = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
     const { data, pageControl, handleSortedChange } = props;
     const { products } = data;
@@ -58,4 +58,4 @@ const ToolBar = props => {
     );
 }
 
-export default ToolBar;
+export default Toolbar;

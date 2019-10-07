@@ -1,0 +1,14 @@
+.infoTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+.infoTable td, th{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+.infoTable tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+.infoTable tr:hover {
+    background-color: #ddd;
+}

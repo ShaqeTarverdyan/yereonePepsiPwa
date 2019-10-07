@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { arrayOf, number, shape, string } from 'prop-types';
 
 import classify from '../../classify';
-import Select from '../Select';
-import mockData from './mockData';
 import defaultClasses from './quantity.css';
 
 class Quantity extends Component {
@@ -23,16 +21,13 @@ class Quantity extends Component {
     };
 
     render() {
-        const { classes, selectLabel, ...restProps } = this.props;
+        const { classes, ...restProps } = this.props;
 
         return (
             <div className={classes.root}>
-                <Select
-                    {...restProps}
-                    field="quantity"
-                    aria-label={selectLabel}
-                    items={mockData}
-                />
+               <div >
+                   {restProps.initialValue}
+               </div>
             </div>
         );
     }

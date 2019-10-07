@@ -70,7 +70,8 @@ class FilterList extends Component {
                     const filterProps = {
                         item: {
                             label: stripHtml(item.label),
-                            value_index: item.value_string
+                            value_index: item.value_string,
+                            swatch_data: item.swatch_data
                         },
                         value: item.value_string,
                         title: stripHtml(item.label),
@@ -78,7 +79,7 @@ class FilterList extends Component {
                         onClick: toggleOption,
                         isSelected: isActive
                     };
-
+                    
                     const filterClass = !isSwatch ? classes.filterItem : null;
 
                     return (

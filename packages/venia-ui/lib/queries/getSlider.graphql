@@ -5,7 +5,7 @@ query slider($id: Int!) {
     		slides {
           id
           title
-          imageUrl
+          image_url
           content
           content_position
           content_appear_animation

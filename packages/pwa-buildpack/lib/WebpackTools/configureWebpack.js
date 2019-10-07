@@ -133,7 +133,7 @@ async function configureWebpack({ context, vendor = [], special = {}, env }) {
                     oneOf: [
                         {
                             test: [paths.src, ...hasFlag('cssModules')],
-                            exclude: /node_modules| owl/,
+                            exclude: /node_modules| owl| pure-react-carousel/,
                             use: [
                                 'style-loader',
                                 {

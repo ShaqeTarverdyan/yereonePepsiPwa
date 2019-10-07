@@ -1,0 +1,21 @@
+
+.ratingEmpty {
+    composes: ratingEmpty from '../Rating/Rating.css';
+    display: inline-block;
+    width: 13.2px;
+}
+.ratingFilled {
+    composes: ratingFilled from '../Rating/Rating.css';
+    display: inline-block;
+     width: 13.2px; 
+}
+.rate {
+    display: flex;
+    align-items: center;
+}
+.stars {
+    padding-bottom: 10px;
+}
+.stars button {
+    width: auto;
+}

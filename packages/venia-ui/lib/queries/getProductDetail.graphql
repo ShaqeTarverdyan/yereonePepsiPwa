@@ -4,6 +4,7 @@ query productDetail($urlKey: String, $onServer: Boolean!) {
             __typename
             sku
             name
+            id
             price {
                 regularPrice {
                     amount {
@@ -12,8 +13,39 @@ query productDetail($urlKey: String, $onServer: Boolean!) {
                     }
                 }
             }
+            rating_summary
+            reviews_count
             description {
                 html
+            }
+            short_description {
+                html
+            }
+            reviews {
+                created_at
+                review_id
+                title
+                nickname
+                detail
+                ratings {
+                    value
+                    rating_code
+                    percent
+                }
+            }
+            attributes {
+                attribute_code
+                attribute_value
+                attribute_label
+            }
+            available_ratings {
+              rating_id
+              rating_code
+              options {
+                option_id
+                code
+                value
+              }
             }
             media_gallery_entries {
                 label
@@ -33,6 +65,10 @@ query productDetail($urlKey: String, $onServer: Boolean!) {
                         store_label
                         use_default_value
                         value_index
+                        swatch_data {
+                            type
+                            value
+                        }
                     }
                 }
                 variants {

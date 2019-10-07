@@ -21,7 +21,7 @@ const Banner = props => {
             <div className={classes[data.banner.hover_effect]}>
                 <div>
                     <img
-                        src={data.banner.image}
+                        src={data.banner.image_url}
                         alt='name'
                         className={`${classes[`banner${id}`]}`}
                     />

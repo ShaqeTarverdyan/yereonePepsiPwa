@@ -1,16 +1,14 @@
-import React, { createRef } from 'react';
+import React from 'react';
 import { Query } from '@magento/venia-drivers';
 import getBrands from '../../queries/getBrands.graphql';
 import { fullPageLoadingIndicator } from '../LoadingIndicator';
 import defaultClasses from './brands.css';
 import { mergeClasses } from '../../classify';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const Brands = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
-    const ref = createRef();
     return (
         <div className={classes.root}>
             <Query query={getBrands}>
@@ -21,28 +19,28 @@ const Brands = props => {
 
                     return (
                         <div className={classes.content}>
-                            <button onClick={() => ref.current.prev()}>
-                                <span className={classes.iconLeft} />
-                            </button>
-                                <OwlCarousel
-                                    className="owl-theme owl-nav"
-                                    items={5}
-                                    margin={5}
-                                    loop
-                                    ref={ref}
-                                >
+                            <CarouselProvider
+                                naturalSlideWidth={100}
+                                naturalSlideHeight={80}
+                                totalSlides={6}
+                                visibleSlides={4}
+                                orientation="horizontal"
+                                dragEnabled={true}
+                                touchEnabled={true}
+                                playDirection="forward"
+                            >
+                                <Slider>
                                     {
-                                        brands.map(item =>
-                                            <div key={item.id} className={classes.brand}>
-                                                <img src={item.logo} alt='brands' />
-                                            </div>
+                                        brands.map((brand, index) =>
+                                            <Slide index={index} key={index} >
+                                                <div key={brand.id} className={classes.brand}>
+                                                    <img src={brand.logo} alt='brands' />
+                                                </div>
+                                            </Slide>
                                         )
                                     }
-                                </OwlCarousel>
-
-                            <button onClick={() => ref.current.next()}>
-                                <span className={classes.iconNext} />
-                            </button>
+                                </Slider>
+                            </CarouselProvider>
                         </div>
                     )
                 }}

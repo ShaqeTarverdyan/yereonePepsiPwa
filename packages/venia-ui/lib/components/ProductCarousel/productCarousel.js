@@ -1,19 +1,16 @@
-import React, { useEffect, createRef } from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@magento/peregrine';
 import getProducts from '../../queries/getProducts.graphql';
-import { fullPageLoadingIndicator } from '../LoadingIndicator';
 import defaultClasses from './productCarousel.css';
 import { mergeClasses } from '../../classify';
-import OwlCarousel from 'react-owl-carousel';
-import 'owl.carousel/dist/assets/owl.carousel.css';
-import 'owl.carousel/dist/assets/owl.theme.default.css';
 import GalleryItem from '../Gallery/item';
-
+import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 
 const ProductCarousel = props => {
 
     const classes = mergeClasses(defaultClasses, props.classes);
-    const { id, pageSize, currentPage, item, addItemToCart } = props;
+    const { id, pageSize, currentPage, addItemToCart } = props;
     const [queryResult, queryApi] = useQuery(getProducts);
     const { data, error, loading } = queryResult;
     const { runQuery, setLoading } = queryApi;
@@ -47,36 +44,35 @@ const ProductCarousel = props => {
         };
     }
 
-    const ref = createRef();
     return data && typeof (data.products.items) != 'undefined' ? (
         <div className={classes.root}>
-            <button onClick={() => ref.current.prev()}>
-                <span className={classes.iconLeft} />
-            </button>
-            <OwlCarousel
-                className="owl-theme owl-nav"
-                items={item}
-                margin={5}
-                loop
-                ref={ref}
+            <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={170}
+                totalSlides={6}
+                visibleSlides={4}
+                orientation="horizontal"
+                dragEnabled={true}
+                touchEnabled={true}
+                playDirection="forward"
             >
-                {
-                    data.products.items.map(product =>
-                        <div className={classes.product} key={product.id} >
-                            <GalleryItem
-                                item={mapGalleryItem(product)}
-                                addItemToCart={addItemToCart}
-                            />
-                        </div>
-                    )
-                }
+                <Slider>
+                    {
+                        data.products.items.map((product, index) =>
+                            <Slide index={index} key={index} >
 
-            </OwlCarousel>
-            <button onClick={() => ref.current.next()}>
-                <span className={classes.iconNext} />
-            </button>
+                                <GalleryItem
+                                    item={mapGalleryItem(product)}
+                                    addItemToCart={addItemToCart}
+                                />
+                            </Slide>
+                        )
+
+                    }
+                </Slider>
+            </CarouselProvider>
         </div>
-    ) : fullPageLoadingIndicator;
+    ) : <div> Loading ... </div>
 
 }
 

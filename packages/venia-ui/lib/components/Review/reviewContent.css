@@ -1,0 +1,33 @@
+.root {
+    font-family: 'RobotoCondensed';
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-row-gap: 80px;
+    padding-top: 20px;
+}
+.content {
+}
+.detail {
+    line-height: 190%;
+    color: #5C5C5C;
+}
+.nickname {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 143%;
+    color: #000000;
+}
+.createdAt {
+    composes: detail;
+}
+.reviews {
+    max-height: 450px;
+    overflow: scroll;
+    display: grid;
+    grid-row-gap: 50px;
+}

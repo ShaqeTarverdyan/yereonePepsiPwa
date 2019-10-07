@@ -22,6 +22,8 @@
 }
 .bannerTop {
     position: relative;
+    overflow: hidden;
+    height: 450px;
 }
 .bannerTop button{
     position: absolute;

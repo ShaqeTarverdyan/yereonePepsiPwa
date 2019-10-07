@@ -26,9 +26,7 @@ export class Button extends Component {
 
     render() {
         const { children, classes, priority, type, ...restProps } = this.props;
-
-        const rootClassName = classes[getRootClassName(priority)];
-
+        const rootClassName = this.props.disabled ? classes.disable : classes[getRootClassName(priority)];
         return (
             <button className={rootClassName} type={type} {...restProps}>
                 <span className={classes.content}>{children}</span>

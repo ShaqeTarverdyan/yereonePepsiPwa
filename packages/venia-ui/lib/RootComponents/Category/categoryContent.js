@@ -4,7 +4,7 @@ import { shape, string } from 'prop-types';
 import { Title } from '../../components/Head';
 import { mergeClasses } from '../../classify';
 import FilterModal from '../../components/FilterModal';
-import ToolBar from './toolBar';
+import Toolbar from './toolbar';
 import Gallery from '../../components/Gallery';
 
 import defaultClasses from './category.css';
@@ -13,13 +13,12 @@ import { useWindowSize } from '@magento/peregrine';
 const CategoryContent = props => {
     const { data, openDrawer, pageControl, pageSize, handleSortedChange } = props;
     const { products } = data;
-    const { filters, items, total_count, page_info, sort_fields } = products;
-    const { current_page, total_pages } = page_info;
+    const { filters, items } = products;
+
     const classes = mergeClasses(defaultClasses, props.classes);
     const title = data ? data.category.name : null;
     const titleContent = title ? `${title} - Venia` : 'Venia';
-    const length = items.length;
-    const total = current_page - 1;
+
     const windowSize = useWindowSize();
     const isMobile = windowSize.innerWidth <= 600;
     const header = filters ? (
@@ -44,7 +43,7 @@ const CategoryContent = props => {
                 <div className={classes.content}>
                     {modal}
                     <div>
-                        <ToolBar 
+                        <Toolbar 
                             data={data} 
                             handleSortedChange={handleSortedChange}
                             pageControl={pageControl}

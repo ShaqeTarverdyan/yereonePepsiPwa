@@ -1,0 +1,14 @@
+mutation submitReview($product_id: Int!, $title: String!, $nickname: String!, $detail: String!, $ratings: [RatingChoice]) {
+    submitReview(
+        input: {
+            product_id: $product_id
+            title: $title
+            nickname: $nickname
+            detail: $detail,
+            ratings: $ratings
+        }
+    )
+    {
+        review_id
+    }
+}

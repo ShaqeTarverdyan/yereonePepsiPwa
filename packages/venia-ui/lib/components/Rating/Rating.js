@@ -1,20 +1,22 @@
 import React from 'react';
 import { mergeClasses } from '../../classify';
-import defaultClasses from './Review.css';
+import defaultClasses from './Rating.css';
 
-const Review = (props) => {
+const Rating = (props) => {
     const { ratingSummary } = props;
-        const classes = mergeClasses(defaultClasses, props.classes)
+    const classes = mergeClasses(defaultClasses, props.classes)
+
+
     return  ratingSummary && typeof (ratingSummary) != 'undefined' ? (
         <div className={classes.root}>
-            <div className={classes.rating_box}>
+            <div className={classes.ratingEmpty}>
                 <div 
-                    className={classes.rating} 
+                    className={classes.ratingFilled} 
                     style={{width:`${ratingSummary}%`}}
                 />
             </div>
         </div>
-    ) : <div></div>;
+    ) : null;
 }
 
-export default Review
+export default Rating

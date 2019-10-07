@@ -28,6 +28,12 @@ query category(
             filter_items {
                 label
                 value_string
+                ... on SwatchLayerFilterItemInterface {
+                    swatch_data {
+                        type
+                        value
+                    }
+                }
             }
         }
         sort_fields {
@@ -63,6 +69,10 @@ query category(
                         store_label
                         use_default_value
                         value_index
+                        swatch_data {
+                            type
+                            value
+                        }
                     }
                 }
                 variants {

@@ -35,11 +35,13 @@ class Product extends Component {
 
     // map Magento 2.3.1 schema changes to Venia 2.0.0 proptype shape to maintain backwards compatibility
     mapProduct(product) {
-        const { description } = product;
+        const { description, short_description } = product;
         return {
             ...product,
             description:
-                typeof description === 'object' ? description.html : description
+                typeof description === 'object' ? description.html : description,
+            short_description:
+                typeof short_description === 'object' ? short_description.html : short_description
         };
     }
 
@@ -58,7 +60,7 @@ class Product extends Component {
                     if (!product) {
                         return <ErrorView outOfStock={true} />;
                     }
-
+                    
                     return (
                         <Fragment>
                             <Title>{`${product.name} - ${STORE_NAME}`}</Title>

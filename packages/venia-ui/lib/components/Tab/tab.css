@@ -1,0 +1,38 @@
+.root {
+    font-family: 'RobotoCondensed'; 
+}
+
+.header {
+    display: flex;
+    border-bottom: 1px solid lightslategray;
+    justify-content: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 143%;
+    letter-spacing: 0.06em;
+}
+.title {
+    padding: 40px 40px;
+    color: #717171
+}
+.activeTitle {
+    composes: title;
+}
+.activeTitle button {
+    font-weight: bold;
+}
+.title button {
+    outline: none
+}
+.content {
+    display: none
+}
+
+.content.active {
+    display: initial;
+    padding: 10px 15px
+}
+.body {
+   
+}

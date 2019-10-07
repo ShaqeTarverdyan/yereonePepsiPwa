@@ -1,5 +1,6 @@
 .root {
     composes: root from '../clickable.css';
+    font-family: 'RobotoCondensed';
     background: none;
     border: 1px solid rgb(var(--color));
     color: rgb(var(--color));
@@ -12,9 +13,10 @@
     --color: var(--pepsi-blue);
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16px;
     letter-spacing: 0.08em;
+    border-radius: 20px;
 }
 
 .filled {
@@ -75,4 +77,8 @@
 .root_highPriority {
     composes: root filled;
     
+}
+.disable {
+    composes: root filled;
+    opacity: 0.5;
 }

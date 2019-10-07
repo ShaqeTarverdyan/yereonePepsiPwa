@@ -1,16 +1,12 @@
 .root {
     display: grid;
-    grid-template-areas:
-        'main'
-        'thumbs';
-    grid-template-columns: auto;
-    grid-template-rows: auto;
+
 }
 
 .imageContainer {
-    display: grid;
+    /* display: grid;
     grid-area: main;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); */
 }
 
 .currentImage {
@@ -52,14 +48,14 @@
 
 @media (min-width: 1024px) {
     .root {
-        grid-gap: 1.5rem;
+        /* grid-gap: 1.5rem;
         grid-template-areas: 'thumbs main';
-        grid-template-columns: 17fr 80fr;
+        grid-template-columns: 17fr 80fr; */
     }
 
     .previousButton,
     .nextButton {
-        display: none;
+        /* display: none; */
     }
 
     .thumbnailList {
@@ -69,4 +65,34 @@
         grid-template-columns: 1fr;
         margin-top: 0;
     }
+}
+.carouselProvider {
+    position: relative;
+}
+.slider {
+    border: 1px solid grey;
+}
+.leftIcon::before {
+    font-family: "Pepsi";
+    content: "\63";
+}
+.rigthIcon::before {
+    font-family: "Pepsi";
+    content: "\64";
+}
+.buttonGroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 70px;
+}
+.thumbnails {
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+}
+.thumbnail {
+    border: 1px solid lightslategray;
+    margin:5px;
 }

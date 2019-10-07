@@ -5,12 +5,16 @@ import { Price } from '@magento/peregrine';
 
 import defaultClasses from './productFullDetail.css';
 import { mergeClasses } from '../../classify';
-
+import Rating from '../Rating';
 import Button from '../Button';
 import { fullPageLoadingIndicator } from '../LoadingIndicator';
 import Carousel from '../ProductImageCarousel';
 import Quantity from '../ProductQuantity';
 import RichText from '../RichText';
+import Tab from '../Tab';
+import ReviewContent from '../Review/reviewContent';
+import Features from '../Features';
+import ProductAdditionalInfo from './productAdditionalInfo';
 
 import appendOptionsToPayload from '../../util/appendOptionsToPayload';
 import findMatchingVariant from '../../util/findMatchingProductVariant';
@@ -86,7 +90,7 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
 const ProductFullDetail = props => {
     // Props.
     const { addToCart, isAddingItem, product } = props;
-
+    console.log('product',product);
     // State.
     const [quantity, setQuantity] = useState(INITIAL_QUANTITY);
     const [optionSelections, setOptionSelections] = useState(
@@ -94,7 +98,7 @@ const ProductFullDetail = props => {
     );
     const derivedOptionCodes = deriveOptionCodesFromProduct(product);
     const [optionCodes] = useState(derivedOptionCodes);
-    
+
     // Members.
     const { amount: productPrice } = product.price.regularPrice;
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -104,7 +108,7 @@ const ProductFullDetail = props => {
         optionCodes,
         optionSelections
     );
-
+    
     // Event handlers.
     const handleAddToCart = useCallback(() => {
         const payload = {
@@ -130,56 +134,116 @@ const ProductFullDetail = props => {
         },
         [optionSelections]
     );
+    const { 
+            attributes,
+            name, 
+            rating_summary, 
+            reviews_count, 
+            description, 
+            short_description, 
+            sku, 
+            reviews,
+            id,
+            available_ratings
+        } = product;
+
+    const addQuantity = () => {
+        return (
+            setQuantity(quantity + 1)
+        )
+    };
+    const subtractQuantity = () => {
+        if (quantity <= 0) {
+            return
+        }
+        return setQuantity(quantity - 1);
+    };
+
+    const tabData = [
+        {
+            id: 1,
+            title: "Description",
+            content: <RichText content={description}/>
+        },
+        {
+            id: 2,
+            title: "Additional information",
+            content: <ProductAdditionalInfo attributes={attributes}/>
+        },
+        {
+            id: 3,
+            title: `Reviews (${reviews_count})`,
+            content: <ReviewContent reviews={reviews} productId={id} availableRatings={available_ratings}/>
+        }
+    ];
 
     return (
-        <Form className={classes.root}>
-            <section className={classes.title}>
-                <h1 className={classes.productName}>{product.name}</h1>
-                <p className={classes.productPrice}>
-                    <Price
-                        currencyCode={productPrice.currency}
-                        value={productPrice.value}
+        <div className={classes.root}>
+            <Form className={classes.form}>
+                <section>
+                    <Carousel
+                        images={mediaGalleryEntries.value}
+                        key={mediaGalleryEntries.key}
                     />
-                </p>
-            </section>
-            <section className={classes.imageCarousel}>
-                <Carousel
-                    images={mediaGalleryEntries.value}
-                    key={mediaGalleryEntries.key}
-                />
-            </section>
-            <section className={classes.options}>
-                <Suspense fallback={fullPageLoadingIndicator}>
-                    <Options
-                        onSelectionChange={handleSelectionChange}
-                        product={product}
-                    />
-                </Suspense>
-            </section>
-            <section className={classes.quantity}>
-                <h2 className={classes.quantityTitle}>Quantity</h2>
-                <Quantity initialValue={quantity} onValueChange={setQuantity} />
-            </section>
-            <section className={classes.cartActions}>
-                <Button
-                    priority="high"
-                    onClick={handleAddToCart}
-                    disabled={isAddingItem || isMissingOptions}
-                >
-                    Add to Cart
-                </Button>
-            </section>
-            <section className={classes.description}>
-                <h2 className={classes.descriptionTitle}>
-                    Product Description
-                </h2>
-                <RichText content={product.description} />
-            </section>
-            <section className={classes.details}>
-                <h2 className={classes.detailsTitle}>SKU</h2>
-                <strong>{product.sku}</strong>
-            </section>
-        </Form>
+                </section>
+                <section className={classes.mainInformation}>
+                    <h1 className={classes.name}>{name}</h1>
+                    <div className={classes.estimate}>
+                        <Rating ratingSummary={rating_summary} />
+                        <span>{reviews_count} Reviews</span>
+                        <p>Add  your review</p>
+                    </div>
+                    <p className={classes.productPrice}>
+                        <Price
+                            currencyCode={productPrice.currency}
+                            value={productPrice.value}
+                        />
+                    </p>
+                    <div className={classes.shortDescription}>
+                        {
+                            short_description ?
+                                <RichText content={short_description} /> :
+                                <div> there is no short_description</div>
+                        }
+                    </div>
+                    <div className={classes.options}>
+                        <Suspense fallback={fullPageLoadingIndicator}>
+                            <Options
+                                onSelectionChange={handleSelectionChange}
+                                product={product}
+                            />
+                        </Suspense>
+                    </div>
+                    <div className={classes.addToCart}>
+                        <div className={classes.quantity}>
+                            <button onClick={subtractQuantity}><span>-</span></button>
+                            <Quantity initialValue={quantity} onValueChange={setQuantity} />
+                            <button onClick={addQuantity}><span>+</span></button>
+                        </div>
+                        <div className={classes.addtoCartButton}>
+                            <Button
+                                priority="high"
+                                onClick={handleAddToCart}
+                                disabled={isAddingItem || isMissingOptions}
+                            >
+                                Add to Cart
+                            </Button>
+                        </div>
+                    </div>
+                </section>
+                <section >
+                    <div className={classes.secondaryInformation}>
+                        <Features />
+                    </div>
+                  
+                </section>
+            </Form>
+            <div>
+                <Tab data={tabData}/>
+            </div>
+
+        </div>
+
     );
 };
 

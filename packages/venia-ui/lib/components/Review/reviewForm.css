@@ -1,0 +1,28 @@
+.root {
+   
+    
+}
+.root h1 {
+    text-align: center;
+}
+.form {
+    display: grid;
+    grid-row-gap: 30px;
+}
+.textInputGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+.rate {
+    display: flex;
+    padding: 30px 0px;
+}
+.rateName {
+    padding-right: 10px
+}
+
+.content button {
+    width: 150px;
+    margin-top: 20px;
+}
