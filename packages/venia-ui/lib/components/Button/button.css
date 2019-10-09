@@ -4,7 +4,7 @@
     background: none;
     border: 1px solid rgb(var(--color));
     color: rgb(var(--color));
-    height: 50px;
+    height: 38px;
     width: 100%;
     padding: 0 1rem;
     transition-duration: 384ms;
@@ -17,6 +17,7 @@
     line-height: 16px;
     letter-spacing: 0.08em;
     border-radius: 20px;
+    text-transform: uppercase;
 }
 
 .filled {

@@ -90,7 +90,6 @@ const getMediaGalleryEntries = (product, optionCodes, optionSelections) => {
 const ProductFullDetail = props => {
     // Props.
     const { addToCart, isAddingItem, product } = props;
-    console.log('product',product);
     // State.
     const [quantity, setQuantity] = useState(INITIAL_QUANTITY);
     const [optionSelections, setOptionSelections] = useState(

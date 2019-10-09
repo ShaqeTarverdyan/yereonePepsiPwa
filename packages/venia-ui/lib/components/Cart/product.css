@@ -1,0 +1,32 @@
+.root {
+    position: relative;
+    align-content: start;
+    display: grid;
+    grid-gap: 0 1rem;
+    grid-template-areas:
+        'image name'
+        'image options'
+        'image quantity';
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: min-content minmax(54px, 1fr) min-content;
+}
+.image {
+    display: flex;
+    justify-content: center;
+}
+.image image{
+    background-color: rgb(var(--venia-grey));
+    border: solid 1px lightslategray;
+}
+.quantity {
+   composes: quantity from '../ProductFullDetail/ProductFullDetail.css';
+   width: auto;
+}
+.quantity button {
+    outline: none;
+}
+
+
+
+
+

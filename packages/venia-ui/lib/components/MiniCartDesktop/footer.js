@@ -7,6 +7,7 @@ import CheckoutButton from '../Checkout/checkoutButton';
 import Button from '../Button';
 import defaultClasses from './footer.css';
 import TotalsSummary from './totalsSummary';
+import { Link, resourceUrl } from '@magento/venia-drivers';
 
 const Footer = props => {
     const {
@@ -14,7 +15,8 @@ const Footer = props => {
         currencyCode,
         isMiniCartMaskOpen,
         numItems,
-        subtotal
+        subtotal,
+        isCartEmpty
     } = props;
 
     const classes = mergeClasses(defaultClasses, props.classes);
@@ -35,9 +37,12 @@ const Footer = props => {
                 subtotal={subtotal}
             />
             <div className={classes.buttonGroup}>
-                <Button priority="normal">
-                    <span>View CArt</span>
-                </Button>
+                <Link to="/cart">
+                    <Button priority="normal" disabled={isCartEmpty}>
+                        <span>View CArt</span>
+                    </Button>
+                </Link>
+
                 <Button priority="high">
                     <span>Checkout</span>
                 </Button>

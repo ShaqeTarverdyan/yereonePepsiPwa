@@ -45,7 +45,8 @@ export default class VeniaAdapter extends Component {
     };
     static apolloLink(apiBase) {
         return createHttpLink({
-            uri: apiBase
+            uri: apiBase,
+            useGETForQueries: true
         });
     }
     static apolloCache() {

@@ -1,0 +1,28 @@
+.root {
+    text-align: center;
+}
+.heading {
+    background: #F4F4F4;
+    border: 1px solid #F5F5F5;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+.couponForm {
+    display: grid;
+    grid-row-gap: 30px;
+    padding: 10px;
+    border: 1px solid #F5F5F5;
+}
+.couponForm p {
+    padding-top: 15px;
+}
+.couponForm input {
+    border: 1px solid gray;
+}
+.disCard {
+    padding: 15px;
+}
+.disCard p {
+    line-height: 30px;
+}

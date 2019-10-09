@@ -1,54 +1,35 @@
 import React from 'react';
 import { arrayOf, bool, func, number, object, shape, string } from 'prop-types';
 
-import Body from './body';
-import Footer from './footer';
-import Header from './header';
-import Mask from './mask';
-import defaultClasses from './miniCart.css';
-
+import Content from './content';
+import Sidebar from './sidebar';
+import defaultClasses from './cart.css';
 import { mergeClasses } from '../../classify';
 import getCurrencyCode from '../../util/getCurrencyCode';
 
-const MiniCart = props => {
+const Cart = props => {
     // Props.
     const {
         beginEditItem,
-        cancelCheckout,
         cart,
         closeDrawer,
         endEditItem,
         isCartEmpty,
-        isMiniCartMaskOpen,
-        isOpen,
         removeItemFromCart,
-        updateItemInCart
+        updateItemInCart,
+        getCartDetails
     } = props;
-    const { editItem, isEditingItem, isLoading, isUpdatingItem } = cart;
-
+    const { editItem, isEditingItem, isLoading, isUpdatingItem, totals } = cart;
+    const { total_segments } = totals;
     // Members.
     const classes = mergeClasses(defaultClasses, props.classes);
     const currencyCode = getCurrencyCode(cart);
     const cartItems = cart.details.items;
     const numItems = cart.details.items_qty;
-    const rootClass = isOpen ? classes.root_open : classes.root;
     const subtotal = cart.totals.subtotal;
-
-    const showFooter = !(isCartEmpty || isLoading || isEditingItem);
-    const footer = showFooter ? (
-        <Footer
-            cart={cart}
-            currencyCode={currencyCode}
-            isMiniCartMaskOpen={isMiniCartMaskOpen}
-            numItems={numItems}
-            subtotal={subtotal}
-            isCartEmpty={isCartEmpty}
-        />
-    ) : null;
-
     return (
-        <aside className={rootClass}>
-            <Body
+        <aside className={classes.root}>
+            <Content
                 beginEditItem={beginEditItem}
                 cartItems={cartItems}
                 closeDrawer={closeDrawer}
@@ -61,14 +42,21 @@ const MiniCart = props => {
                 isUpdatingItem={isUpdatingItem}
                 removeItemFromCart={removeItemFromCart}
                 updateItemInCart={updateItemInCart}
+                totals={totals}
             />
-            {/* <Mask isActive={isMiniCartMaskOpen} dismiss={cancelCheckout} /> */}
-            {footer}
+            <Sidebar
+                currencyCode={currencyCode}
+                numItems={numItems}
+                subtotal={subtotal}
+                totalSegments={total_segments}
+                cart={cart}
+                getCartDetails={getCartDetails}
+            />
         </aside>
     );
 };
 
-MiniCart.propTypes = {
+Cart.propTypes = {
     beginEditItem: func.isRequired,
     cancelCheckout: func,
     cart: shape({
@@ -112,4 +100,4 @@ MiniCart.propTypes = {
     updateItemInCart: func
 };
 
-export default MiniCart;
+export default Cart;

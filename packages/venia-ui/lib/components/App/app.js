@@ -134,7 +134,7 @@ const App = props => {
             </Main>
             <Mask isActive={overlay} dismiss={closeDrawer} />
             <Navigation />
-            {/* <MiniCart isOpen={cartIsOpen} /> */}
+            <MiniCart isOpen={cartIsOpen} />
             <Account  isOpen={startRegister}/>
             <ToastContainer />
         </HeadProvider>

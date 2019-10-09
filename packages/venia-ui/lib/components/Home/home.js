@@ -43,7 +43,7 @@ const Home = props => {
             <div className={classes.productCarousel}>
                 <h1>CONFIGURABLE PRODUCTS</h1>
                 <ProductCarousel
-                    id={12}
+                    id={21}
                     pageSize={6}
                     currentPage={1}
                 />

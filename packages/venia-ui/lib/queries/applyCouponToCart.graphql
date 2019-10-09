@@ -1,0 +1,26 @@
+mutation applyCouponToCart($cart_id: String!, $coupon_code: String!) {
+    applyCouponToCart(
+        input: {
+        cart_id: $cart_id,
+        coupon_code: $coupon_code
+        }
+    ) {
+        cart {
+        items {
+            product {
+            name
+            }
+            quantity
+        }
+        applied_coupon {
+            code
+        }
+        prices {
+            grand_total{
+            value
+            currency
+            }
+        }
+        }
+    }
+}

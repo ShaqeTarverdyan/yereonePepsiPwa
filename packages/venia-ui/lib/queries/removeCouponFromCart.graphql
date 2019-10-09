@@ -1,0 +1,24 @@
+mutation removeCouponFromCart($cart_id: String!) {
+  removeCouponFromCart(
+    input:
+      { cart_id: $cart_id }
+    ) {
+    cart {
+      items {
+        product {
+          name
+        }
+        quantity
+      }
+      applied_coupon {
+        code
+      }
+      prices {
+        grand_total{
+          value
+          currency
+        }
+      }
+    }
+  }
+}

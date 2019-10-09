@@ -43,21 +43,21 @@
 }
 
 .quantity {
-    width: 150px;
+    border: 1px solid black;
+    border-radius: 29px;
     display: grid;
-    border: 1px solid lightslategray;
-    border-radius: 20px;
-    grid-template-columns: 1fr 1fr 1fr;
-    align-items: end;
+    grid-template-columns: 1fr 2fr 1fr;
+    width: 133px;
+    height: 38px;
+    align-items: center;
     text-align: center;
-    padding: 14px 10px;
    
 }
 .quantity button {
     outline: none;
 }
 .addtoCartButton {
-    width: 150px;
+    width: 133px;
 }
 .shortDescription {
     font-family: 'RobotoCondensed';

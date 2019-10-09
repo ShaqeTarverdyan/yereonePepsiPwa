@@ -1,0 +1,12 @@
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #F5F5F5;
+}
+.table thead th{
+    background: #F4F4F4;
+    border: 1px solid #F5F5F5;
+    padding: 10px;
+    text-align: center;
+}
