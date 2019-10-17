@@ -6,6 +6,7 @@ import { mergeClasses } from '../../classify';
 import GalleryItem from '../Gallery/item';
 import { CarouselProvider, Slider, Slide } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { useWindowSize } from '@magento/peregrine';
 
 const ProductCarousel = props => {
 
@@ -14,6 +15,8 @@ const ProductCarousel = props => {
     const [queryResult, queryApi] = useQuery(getProducts);
     const { data, error, loading } = queryResult;
     const { runQuery, setLoading } = queryApi;
+    const windowSize = useWindowSize();
+    const isDesktop = windowSize.innerWidth >= 501;
 
     useEffect(() => {
         setLoading(true);
@@ -43,31 +46,29 @@ const ProductCarousel = props => {
                 typeof small_image === 'object' ? small_image.url : small_image
         };
     }
-
+    const slides = isDesktop ? 4 : 2;
     return data && typeof (data.products.items) != 'undefined' ? (
         <div className={classes.root}>
             <CarouselProvider
-                naturalSlideWidth={100}
-                naturalSlideHeight={170}
+                naturalSlideWidth={295}
+                naturalSlideHeight={500}
                 totalSlides={6}
-                visibleSlides={4}
+                visibleSlides={slides}
                 orientation="horizontal"
                 dragEnabled={true}
                 touchEnabled={true}
-                playDirection="forward"
+                playDirection="forward" 
             >
-                <Slider>
+                <Slider >
                     {
                         data.products.items.map((product, index) =>
-                            <Slide index={index} key={index} >
-
+                            <Slide index={index} key={index} className={classes.imageWrapper}>
                                 <GalleryItem
                                     item={mapGalleryItem(product)}
                                     addItemToCart={addItemToCart}
                                 />
                             </Slide>
                         )
-
                     }
                 </Slider>
             </CarouselProvider>

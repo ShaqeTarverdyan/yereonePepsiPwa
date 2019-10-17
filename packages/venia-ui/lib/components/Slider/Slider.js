@@ -4,8 +4,9 @@ import SLIDER_QUERY from '../../queries/getSlider.graphql';
 import { useQuery } from '@magento/peregrine';
 import defaultClasses from './Slider.css';
 import classify from '../../classify';
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, Image} from 'pure-react-carousel';
+import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { resourceUrl } from '@magento/venia-drivers';
 
 
 const SliderComponent = props => {
@@ -23,21 +24,40 @@ const SliderComponent = props => {
         (data !== null && data.slider.slides) ?
             <div className={classes.slideStyle}>
                 <CarouselProvider
-                    naturalSlideWidth={100}
-                    naturalSlideHeight={100}
+                    naturalSlideWidth={610}
+                    naturalSlideHeight={778}
                     totalSlides={2}
                     orientation="horizontal"
                 >
-                    <Slider >
+                    <Slider className={classes.slider}>
                         {
                             data.slider.slides.map((slide, index, ) =>
-                                <Slide 
-                                    index={index} 
-                                    key={index} 
+                                <Slide
+                                    index={index}
+                                    key={index}
                                     classNameHidden={classes.notVisible}
                                     classNameVisible={classes.visible}
                                 >
-                                    <Image src={slide.image_url} alt='name' />
+                                    <div>
+                                        <img
+                                            src={slide.image_url}
+                                            alt='name'
+                                            srcSet={`
+                                            ${resourceUrl(slide.image_url, {
+                                                type: 'image-slide',
+                                                width: 768,
+                                                height: 936
+                                            })} 768w,
+                                            ${resourceUrl(slide.image_url, {
+                                                type: 'image-slide',
+                                                width: 610,
+                                                height: 778,
+                                            })} 1024w
+                                        `}
+                                            sizes="(min-width: 768px) 609px 100vw"
+                                        />
+                                    </div>
+
                                     <div className={classes.text} >
                                         <p className={classes.shop}>Shop</p>
                                         <p className={classes.title}>

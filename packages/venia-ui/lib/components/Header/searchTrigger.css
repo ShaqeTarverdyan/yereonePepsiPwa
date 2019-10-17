@@ -3,8 +3,8 @@
     transition-property: color;
     transition-duration: 224ms;
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    height: 3rem;
-    width: 3rem;
+    height: 18px;
+    width: 1px;
 }
 
 .open {

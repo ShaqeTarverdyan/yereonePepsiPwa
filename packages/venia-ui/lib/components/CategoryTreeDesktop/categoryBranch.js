@@ -1,5 +1,5 @@
 import React from 'react';
-import {  number, shape, string } from 'prop-types';
+import { number, shape, string } from 'prop-types';
 
 import { mergeClasses } from '../../classify';
 import defaultClasses from './categoryBranch.css';
@@ -19,12 +19,15 @@ const Branch = props => {
     return (
         <li className={classes.root}>
             <div className={classes.target}>
-                <span className={classes.text}>{name}</span>
-                <span className={icon} style={{paddingTop:'10px'}}/>
+                <div style={{position:'relative'}}>
+                    <span className={classes.text}>{name}</span>
+                    <span>{menuLabel}</span>
+                </div>
+                <span className={icon}  />
             </div>
-            <div>{menuLabel}</div>
+            
             <div className={`${defaultClasses.branch} ${defaultClasses[positionLevel]}`}>
-               <CategoryTree  categoryId={id}/>
+                <CategoryTree categoryId={id} />
             </div>
         </li>
     );

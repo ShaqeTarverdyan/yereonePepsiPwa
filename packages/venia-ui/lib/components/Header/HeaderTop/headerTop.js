@@ -12,7 +12,6 @@ const HeaderTop = props => {
     return (
         <div className={classes.root}>
             <div className={classes.content}>
-
                 <Query query={getCmsBlock} variables={{ identifiers: 'header_top_text' }}>
                     {({ loading, error, data }) => {
                         if (error) {
@@ -25,14 +24,13 @@ const HeaderTop = props => {
                         if (loading) {
                             return fullPageLoadingIndicator;
                         }
-                       
                         const cmsBlock = data.cmsBlocks.items[0];
                         return (
                             <>
-                                <div className={classes.phoneNumber}>
+                                <p className={classes.phoneNumber}>
                                     Call: (888) 1900 86420
-                                </div>
-                                <div className={classes.text}>
+                                </p>
+                                <div className={classes.block}>
                                     <RichText content={cmsBlock.content} />
                                 </div>
                             </>

@@ -47,7 +47,7 @@ const MiniCart = props => {
 
     return (
         <aside className={rootClass}>
-            {/* <Header closeDrawer={closeDrawer} isEditingItem={isEditingItem} /> */}
+            <Header closeDrawer={closeDrawer} isEditingItem={isEditingItem} />
             <Body
                 beginEditItem={beginEditItem}
                 cartItems={cartItems}

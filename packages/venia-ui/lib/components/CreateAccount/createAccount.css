@@ -33,7 +33,7 @@
 }
 .actions  div button {
     font-weight: 700;
-    color: var(--pepsi-blue);
+    color: var(--blue);
     text-decoration: underline;
 }
 .error {

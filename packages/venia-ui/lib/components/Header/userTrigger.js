@@ -1,14 +1,14 @@
 import React from 'react';
-import user from './user.png';
-import Image from '../Image';
+import defaultClasses from './header.css'
+import classify from '../../classify';
 
 
 const UserTrigger = props => {
-    const { startRegister } = props;
+    const { startRegister, classes } = props;
     return (
         <button onClick={startRegister}>
-            <Image src={user} style={{ width: '25px', height: '25px' }} />
+            <span className={classes.iconUser}/>
         </button>
     );
 }
-export default UserTrigger;
+export default classify(defaultClasses)(UserTrigger);

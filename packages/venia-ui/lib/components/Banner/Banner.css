@@ -5,16 +5,21 @@
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
+
 .Sepia div:hover img {
 	-webkit-filter: sepia(0);
 	filter: sepia(0);
 }
 
+.Shine {
+	height: 100%;
+}
 
 .Shine div {
     overflow: hidden;
-	position: relative;
+	position: relative;	
 }
+
 .Shine div::before {
     position: absolute;
     top: 0;
@@ -29,10 +34,12 @@
     -webkit-transform: skewX(-10deg);
     transform: skewX(-10deg);
 }
+
 .Shine div:hover::before {
 	-webkit-animation: shine .9s;
 	animation: shine .9s;
 }
+
 @-webkit-keyframes shine {
 	100% {
 		left: 100%;

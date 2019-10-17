@@ -2,10 +2,8 @@
     composes: root from '../clickable.css';
     border-radius: 50%; 
     height: 20px;
-    margin-left: 1rem;
-    margin-top: 1rem;
     min-width: 20px;
-    padding: 0 0.5rem;
+    
 }
 
 @media (min-width: 1024px) {
@@ -22,9 +20,12 @@
     background-color: rgb(var(--venia-text));
     color: white;
 }
+
 .root_focused {
     composes: root;
 }
+
 .root_selected_focused {
     composes: root_selected;
 }
+

@@ -1,12 +1,15 @@
 .root{
-    width: var(--pepsi-desktop-width);
+    width: var(--desktop-width);
     margin: 0 auto;
+    height: 65px;
     display: flex;
-    align-items: center;
     line-height: 60px;
     font-size: x-large;
     font-weight: lighter;
 }
+
 .tree {
     display: flex;
+    margin: 14px 0px;
+    padding: 0;
 }

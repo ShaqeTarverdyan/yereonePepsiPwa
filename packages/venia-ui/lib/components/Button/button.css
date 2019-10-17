@@ -4,24 +4,24 @@
     background: none;
     border: 1px solid rgb(var(--color));
     color: rgb(var(--color));
-    height: 38px;
+    height: 32px;
     width: 100%;
     padding: 0 1rem;
     transition-duration: 384ms;
     transition-property: background-color, color;
     transition-timing-function: var(--venia-anim-standard);
-    --color: var(--pepsi-blue);
+    --color: var(--blue);
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 16px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     border-radius: 20px;
     text-transform: uppercase;
 }
 
 .filled {
-    background-color: rgb(var(--pepsi-blue));
+    background-color: rgb(var(--blue));
     color: white;
 }
 
@@ -61,7 +61,7 @@
 .root_lowPriority {
     composes: root;
     border-width: 0;
-    color: rgb(var(--pepsi-blue));
+    color: rgb(var(--blue));
     text-decoration: none;
     width:auto;
     color: black;
@@ -82,4 +82,13 @@
 .disable {
     composes: root filled;
     opacity: 0.5;
+}
+
+@media (min-width: 768px) {
+    .root {
+        height: 38px;
+        font-size: 16px;
+        letter-spacing: 0.08em;
+
+    }
 }

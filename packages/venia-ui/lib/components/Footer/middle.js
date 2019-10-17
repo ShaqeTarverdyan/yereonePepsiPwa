@@ -8,20 +8,21 @@ const Middle = props => {
         <div className={classes.middleRoot}>
             <div>
                 <h1>SHOP</h1>
-                <ul>
-                    <li> New Collection</li>
-                    <li> Product</li>
-                    <li> Latest news</li>
-                </ul>
+                    <ul className={classes.middleList}>
+                        <li> New Collection</li>
+                        <li> Product</li>
+                        <li> Latest news</li>
+                    </ul>
+
             </div>
             <div>
                 <h1>ABOUT US</h1>
-                <ul>
-                    <li> New Collection</li>
-                    <li> Product</li>
-                    <li> Latest news</li>
-                    <li> Product</li>
-                </ul>
+                    <ul className={classes.middleList}>
+                        <li> New Collection</li>
+                        <li> Product</li>
+                        <li> Latest news</li>
+                        <li> Product</li>
+                    </ul>
             </div>
         </div>
     );

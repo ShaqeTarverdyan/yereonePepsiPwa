@@ -1,21 +1,36 @@
 .content {
     align-items: center;
 }
+
 .iconLeft:before {
     font-family: var(--pepsi-font-pepsi);
     content: "\63";
     font-size: xx-large;
 }
+
 .iconNext:before {
     font-family: var(--pepsi-font-pepsi);
     content: "\64";
     font-size: xx-large;
 }
+
 .content button {
     outline: none
 }
+
 .brand {
-    width: 80%;
-    border: 1px solid #DCDBDB;
-    box-sizing: border-box;
+    width: 190px;
+}
+
+.brand img {
+    width: 100%;
+    max-width: 100%;
+    height: 190px;
+    padding: 0px;
+    border: 1px solid #dedede;
+    transition: all .2s;
+}
+/* desltop */
+@media (min-width: 768px) {
+
 }

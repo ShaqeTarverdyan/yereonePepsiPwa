@@ -7,13 +7,16 @@ import Features from '../Features';
 import Brands from '../Brands';
 import ProductCarousel from '../ProductCarousel';
 import Testimonials from '../Testimonials';
+import { useWindowSize } from '@magento/peregrine';
 
 const Home = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
+    const windowSize = useWindowSize();
+    const isMobile = windowSize.innerWidth <= 993;
     return (
         <div className={classes.root}>
             <div className={classes.top}>
-                <div className={classes.slide}>
+                <div className={classes.slider}>
                     <Slider id={3} />
                 </div>
                 <div className={classes.banner}>
@@ -32,7 +35,7 @@ const Home = props => {
                     <Features />
                 </div>
             </div>
-            <div className={classes.productCarousel}>
+            <div className={classes.carouselWrapper} style={{ marginTop: isMobile ? '25px' : '81px'}}>
                 <h1>FEATURED PRODUCTS</h1>
                 <ProductCarousel
                     id={6}
@@ -40,10 +43,10 @@ const Home = props => {
                     currentPage={1}
                 />
             </div>
-            <div className={classes.productCarousel}>
+            <div className={classes.carouselWrapper} style={{ marginTop: isMobile ? '60px' : '-30px'}}>
                 <h1>CONFIGURABLE PRODUCTS</h1>
                 <ProductCarousel
-                    id={21}
+                    id={6}
                     pageSize={6}
                     currentPage={1}
                 />

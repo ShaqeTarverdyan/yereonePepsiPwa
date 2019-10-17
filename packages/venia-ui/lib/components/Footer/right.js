@@ -8,20 +8,25 @@ const Right = props => {
     return (
         <div className={classes.rightRoot}>
             <h1>Contuct US</h1>
-            <ul>
+            <ul className={classes.rightContent}>
                 <li>
-                    <div className={classes.iconHome} />
+                    <span className={classes.iconHome} />
                     <p>No 40 Baria Street 133/2 New York</p>
                 </li>
                 <li>
-                    <div className={classes.iconEnvelope} />
+                    <span className={classes.iconEnvelope} />
                     <p>No 40 Baria Street 133/2 New York</p>
                 </li>
                 <li>
-                    <div className={classes.iconPhone} />
+                    <span className={classes.iconPhone} />
                     <p>No 40 Baria Street 133/2 New York</p>
                 </li>
             </ul>
+            <div className={classes.icons}>
+                <div> <span className={classes.iconInstagram} /></div>
+                <div> <span className={classes.iconFacebook} /></div>
+                <div> <span className={classes.iconTwitter} /></div>
+            </div>
         </div>
     );
 }

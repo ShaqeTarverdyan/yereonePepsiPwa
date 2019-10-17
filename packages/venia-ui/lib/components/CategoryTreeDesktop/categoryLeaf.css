@@ -2,8 +2,9 @@
     align-items: center;
     border-bottom: 1px solid rgb(var(--venia-border));
     display: flex;
-    margin: 0 1.25rem;
+    margin-right: 1.25rem;
     position: relative;
+    height: 55px;
 }
 
 .target {
@@ -13,7 +14,7 @@
     height: 3.5rem;
     justify-content: space-between;
     margin: 0 -1.25rem;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     width: 100%;
 }
 
@@ -27,8 +28,9 @@
     font-size: 16px;
     line-height: 19px;
     letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 .text:hover {
     cursor: pointer;
-    color: rgb(var(--pepsi-blue));
+    color: rgb(var(--blue));
 }

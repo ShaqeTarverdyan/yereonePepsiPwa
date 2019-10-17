@@ -1,7 +1,9 @@
 query brands {
     brands {
         id
-        logo
-        profile_image
+        logo_url
+        logo_path
+        profile_image_url
+        profile_image_path
     }
 }

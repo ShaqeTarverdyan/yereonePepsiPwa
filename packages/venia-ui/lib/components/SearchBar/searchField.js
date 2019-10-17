@@ -45,8 +45,8 @@ const SearchField = props => {
     
     return (
         <TextInput
-            after={resetButton}
-            before={<Image src={search} style={{width:'25px', height:'25px'}} />}
+            after={<span className={defaultClasses.iconSearch}/>}
+            before={resetButton}
             field="search_query"
             onFocus={onFocus}
             onValueChange={onChange}

@@ -1,6 +1,8 @@
 .root {
     align-items: center;
+    margin-top: 18px;
 }
+
 .iconLeft:before {
     font-family: var(--pepsi-font-pepsi);
     content: "\63";
@@ -12,10 +14,12 @@
     content: "\64";
     font-size: xx-large;
 }
+
 .root button {
     outline: none
 }
-.product {
-    width:120px;
-   
+
+.imageWrapper {
+    display: grid;
+    grid-column-gap: 20px
 }

@@ -59,11 +59,11 @@
     --venia-text-spot: 255, 99, 51;
     --venia-warning-dark: 249, 93, 94;
     --venia-warning-light: 254, 229, 232;
-    --pepsi-full-width: 100%;
-    --pepsi-desktop-width: 1500px;
+    --full-width: 100%;
+    --desktop-width: 1240px;
     --pepsi-red: 255, 23, 63;
-    --pepsi-blue: 1, 119, 219;
-    --pepsi-border: 224, 224, 224;
+    --blue: 1, 119, 219;
+    --border: 224, 224, 224;
 }
 
 html {

@@ -3,6 +3,7 @@ query banner($id: Int!) {
         id
         title
         image_url
+        image_path
         hover_effect
     }
 }

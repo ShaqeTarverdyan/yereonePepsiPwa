@@ -1,23 +1,34 @@
 .root {
-   width: var(--pepsi-full-width);
-   border-bottom: 1px solid rgb(var(--pepsi-border));
-   font-weight: 100;
+    display: none;
 }
-.content {
-    width: var(--pepsi-desktop-width);
-    margin:0 auto;
-    display: flex;
-    padding: 20px 0;
-}
-.phoneNumber {
-    flex: 1;
-}
-.text {
-    flex: auto;
-    color: rgb(var(--pepsi-red));
-    font-style: normal;
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.06em;
+
+@media screen and (min-width: 768px) {
+    .root {
+        font-family: 'RobotoCondensed';
+        display: block;
+        width: var(--full-width);
+        border-bottom: 1px solid rgb(var(--border));
+        font-weight: 100;
+     }
+     .content {
+        width: var(--desktop-width);
+        height: 50px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+     }
+     .phoneNumber {
+        flex: 1;
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.06em;
+        color: #000000;
+     }
+     .block {
+        flex: 1.89;
+        height: 19px;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        color: #FF173E;
+     }
 }

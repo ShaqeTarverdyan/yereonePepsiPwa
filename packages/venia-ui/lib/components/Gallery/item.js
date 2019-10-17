@@ -12,11 +12,13 @@ const Options = React.lazy(() => import('../ProductOptions'));
 import appendOptionsToPayload from '../../util/appendOptionsToPayload';
 import isProductConfigurable from '../../util/isProductConfigurable';
 import Rating from '../Rating';
+import Button from '../Button';
+
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
-const imageWidth = '300';
-const imageHeight = '375';
+const imageWidth = '280';
+const imageHeight = '371';
 
 
 const INITIAL_OPTION_CODES = new Map();
@@ -167,14 +169,26 @@ class GalleryItem extends Component {
             }
             return addItemToCart(payload);
         };
+        const optionsClass = isProductConfigurable(item) ? classes.optios : classes.noOptions;
         return (
             <div className={classes.root}>
                 <Link to={resourceUrl(productLink)} className={classes.images}>
                     {this.renderImagePlaceholder()}
                     {this.renderImage()}
                 </Link>
+                <div className={classes.addToCart}>
+                    <Button
+                        onClick={handleAddToCart}
+                        disabled={isMissingOptions}
+                        priority="normal"
+                    >
+                        {isAddingToCart && <div>Adding...</div>}
+                        {!isAddingToCart && !isAddedToCart && <div>Add to Cart</div>}
+                        {isAddedToCart && <div>Added</div>}
+                    </Button>
+                </div>
                 <div className={classes.content}>
-                    <div >
+                    <div className={classes.rating}>
                         <Rating
                             ratingSummary={rating_summary}
                         />
@@ -188,7 +202,7 @@ class GalleryItem extends Component {
                             currencyCode={price.regularPrice.amount.currency}
                         />
                     </div>
-                    <div>
+                    <div className={optionsClass}>
                         <Suspense fallback={fullPageLoadingIndicator}>
                             <Options
                                 onSelectionChange={handleSelectionChange}
@@ -196,14 +210,6 @@ class GalleryItem extends Component {
                             />
                         </Suspense>
                     </div>
-                </div>
-
-                <div className={classes.addToCart}>
-                    <button onClick={handleAddToCart} disabled={isMissingOptions}>
-                        {isAddingToCart && <div>Adding...</div>}
-                        {!isAddingToCart && !isAddedToCart && <div>Add to Cart</div>}
-                        {isAddedToCart && <div>Added</div>}
-                    </button>
                 </div>
                 <div className={classes.newPosition}>
                     {newItem}

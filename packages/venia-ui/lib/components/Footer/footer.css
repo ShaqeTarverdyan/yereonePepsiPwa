@@ -1,59 +1,220 @@
+
   .root {
     background-color: black;
     color:white;
+    margin-top: 80px;
   }
+
   .content {
-    max-width: 1500px;
+    max-width: 500px;
     margin:0 auto;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 400px;
-    padding:20px;
+    grid-template-columns: repeat(1, 1fr);
+    height: auto;
   }
+
   .content ul li {
-    display: flex;
-    line-height: 50px
+    display: grid;
+    grid-template-columns: 1.5fr 13fr;
+    font-size: 16px;
+    line-height: 27px;
+    letter-spacing: 0.02em;
+    align-items: center;
   }
+
   .content h1 {
-    line-height: 100px
+    font-family: 'RobotoCondensed';
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
   }
+
+  .leftRoot {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin-top: 50px;
+    margin-left: 13px;
+    margin-bottom: 60px;
+    margin-right: 35px;
+  }
+
   .leftRoot p {
-    padding: 10px 12px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.08em;
+    margin-top: 13px;
   }
+
   .leftImg img {
-    width: 30%;
-    height: 30%;
+    width: 21%;
+    height: 47%;
   }
+
   .middleRoot {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 50px;
   }
+
+  .middleList {
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+
+  .rightRoot h1{
+    margin-left: 13px; 
+  }
+
+  .middleRoot h1 {
+    margin-left: 6px; 
+  }
+
+  .rightContent {
+    margin-top: 13px;
+  }
+
+  .rightContent span {
+    color: rgb(var(--blue));
+  }
+
+  .middleList > li::before {
+    content: ' ';
+    background-color: rgb(var(--blue));
+    height: 10px;
+    width: 10px;
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+
+  .middleRoot > div {
+    padding-left: 8px;
+  }
+
   .fixedStyle {
-    color: rgb(var(--pepsi-blue));
+    color: rgb(var(--blue));
     padding-right: 10px;
   }
-  .iconFacebook:before {
-    font-family: 'Pepsi';
-    content: "\6e";
+  .iconHome, .iconEnvelope, .iconPhone {
+    text-align: center;
   }
+
   .iconHome:before {
     font-family: 'Pepsi';
     content: "\69";
-    }
+  }
+
   .iconEnvelope:before {
     font-family: 'Pepsi';
     content: "\6a";
   }
+
   .iconPhone:before {
-    
     font-family: 'Pepsi';
     content: "\6b";
   }
+
   .iconInstagram:before {
     font-family: 'Pepsi';
     content: "\6c";
   }
+
   .iconTwitter:before {
     font-family: 'Pepsi';
     content: "\6d";
+  }
+
+  .iconFacebook:before {
+    font-family: 'Pepsi';
+    content: "\6e";
+  }
+
+  .icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 140px;
+    margin-left: 17px;
+    padding-top: 22px;
+    margin-bottom: 30px;
+  }
+
+  .icons div {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid rgb(var(--blue));
+    color: rgb(var(--blue));
+  }
+
+  /* desktop style */
+  @media (min-width: 768px) {
+    .root {
+      margin-top: 0px;
+      height: 343px;
+    }
+
+    .content {
+      max-width: var(--desktop-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: auto;
+      padding: 75px 0px;
+    }
+
+    .content h1 {
+      font-size: 16px;
+      line-height: 19px;
+    }
+
+    .content > div {
+      border-bottom: none;
+    }
+
+    .leftImg img {
+      width: 33%;
+      height: 60%;
+    }
+
+    .leftRoot {
+      grid-row-gap: 65px;
+      margin-left: 0px;
+      margin-bottom: 0px;
+      margin-right: 0px;
+      margin-top: 0px;
+    }
+
+    .leftRoot p {
+      margin-top: 0px;
+    }
+
+    .content > div {
+      border-bottom: 1px solid white;
+    }
+
+    .middleRoot {
+      margin-bottom: 0px;
+    }
+
+    .middleList {
+      margin-top: 38px;
+      margin-left: 0px;
+    }
+
+    .rightContent {
+      margin-top: 38px;
+    }
+
+    .rightRoot h1, .leftRoot h1 {
+      margin-left: 15px;
+    }
+
+    .icons {
+      margin-left: 17px;
+      padding-top: 17px;
+    }
   }

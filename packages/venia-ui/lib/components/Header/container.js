@@ -18,8 +18,8 @@ const mapStateToProps = ({ app, cart }) => {
 const mapDispatchToProps = dispatch => ({
     startRegister: () => dispatch(toggleDrawer('startRegister')),
     getCartDetails: () => dispatch(getCartDetails()),
-    toggleCart,
-    toggleSearch
+    toggleCart: () => dispatch(toggleCart('cart')),
+    toggleSearch: () => dispatch(toggleSearch())
 });
 export default connect(
     mapStateToProps,

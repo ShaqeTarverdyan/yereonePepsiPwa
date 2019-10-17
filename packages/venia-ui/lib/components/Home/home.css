@@ -1,84 +1,196 @@
-.staticWidth {
-    max-width: 1500px;
-    margin: 0 auto;
-}
 .root {
-    display: grid;
-    grid-row-gap: 5%;
+    padding: 0px 14px;
 }
+
 .top {
-    composes: staticWidth;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 10px;
-    margin-top: 20px;
-    height: 700px;   
+    grid-row-gap: 20px;
 }
 
 .banner {
     display: grid;
-    grid-template-rows: 1fr auto;
-    grid-row-gap: 10px;
+    grid-row-gap: 20px;
 }
+
 .bannerTop {
     position: relative;
     overflow: hidden;
-    height: 450px;
+    height: 262px;
 }
+
 .bannerTop button{
     position: absolute;
-    top: 80%;
-    left: 43%;
+    top: 64%;
+    left: 33%;
     color: white;
-    background-color: #0177DB;
+    background-color: rgb(var(--blue));
     padding: 10px 20px;
     border: 2px solid white;
-    border-radius: 25px;
+    border-radius: 31px;
     font-weight: 600;
+    width: 116px;
+    height: 36px;
+    font-family: 'RobotoCondensed';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0.02rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
 }
+
 .bannerDown {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap:10px
+    grid-column-gap: 21px;
+    height: 163px;
 }
+
 .banner5 {
     width: -webkit-fill-available;
-    height: 450px;
 }
+
 .banner3, .banner4 {
     width: 100%;
-    height: 240px;
+    height: 100%;
 }
 
 .features {
     width: 100%;
-    border-top:1px solid rgb(var(--pepsi-border));
-    border-bottom: 1px solid rgb(var(--pepsi-border));
+    height: 437px;
+    border-top:1px solid rgb(var(--border));
+    border-bottom: 1px solid rgb(var(--border));
+    margin-top: 20px;
 }
-.featureContent {
-    composes: staticWidth;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 
+.featureContent {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    /* grid-row-gap: 27px; */
+    padding-top: 43.7px;
 }
-.productCarousel {
+
+.carouselWrapper, .brands, .testimonials {
     margin: 0 auto;
-    width: 1500px;
     text-align: center;
 }
-.productCarousel h1 {
-    line-height: 50px;
-}
+
 .brands {
-    width: 1500px;
-    text-align: center;
-    margin: 0 auto;
-    padding: 3px;
+    margin-top: 60px;
 }
-.brands h1 {
-    line-height: 50px;
+
+.carouselWrapper h1, .brands h1, .testimonials h1 {
+    font-family: 'RobotoCondensed';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 55px;
+    letter-spacing: 0.08em;
+    color: #000000;
+    text-transform: uppercase;
 }
-.testimonials {
-    width: 1500px;
-    margin: 0 auto;
+
+.testimonials h1 {
+    line-height: 36px;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    .root {
+        display: grid;
+        margin-top: 8px;
+    }
+
+    .top {
+        margin: 0 auto;
+        max-width: var(--desktop-width);
+        height: 778px;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+
+    .slider {
+        width: 100%;
+        height: 441px;    
+    }
+
+    .banner {
+        grid-row-gap: 21px;
+        height: 778px;
+    }
+
+    .bannerTop {
+        height: 461px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .bannerTop button{
+        top: 76%;
+        left: 39%;
+        top: 60%;
+        width: 135px;
+        height: 45px;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .bannerDown {
+        height: 300px;
+    }
+
+    .banner5 {
+        width: auto;
+        height: 100%;
+    }
+
+    .banner3, .banner4 {
+        width: 100%;
+        min-height: 295px;
+    }
+
+    .features {
+        width: 100%;
+        height: 77px;
+        border-top:1px solid rgb(var(--border));
+        border-bottom: 1px solid rgb(var(--border));
+        margin-top: 81px;
+    }
+
+    .featureContent {
+        max-width: var(--desktop-width);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-column-gap: 149px;
+        padding-top: 0px;
+    }
+
+    .carouselWrapper, .brands, .testimonials {
+        max-width: var(--desktop-width);
+        height: auto;
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        display: grid;
+        grid-template-rows: 1fr 6fr;
+    }
+
+    .carouselWrapper {
+       
+    }
+
+    .brands {
+       
+    }
+
+    .testimonials {
+        height: 610px;
+        margin-top: 81px;
+    }
+
 }

@@ -5,8 +5,11 @@ query testimonials {
           author
           job
           testimonial_content
-          image
+          image_url
+          image_path
           flag
+          flag
+          rating
         }
     }
 }

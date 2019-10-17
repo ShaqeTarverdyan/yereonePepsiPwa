@@ -10,7 +10,7 @@
 }
 
 .page {
-    height:320vh;
+    min-height: 100vh;
 }
 
 .page_masked {

@@ -1,9 +1,10 @@
 import React, { createContext, useMemo } from 'react';
 
 import { connect } from '../../drivers';
-import { closeDrawer } from '../../actions/app';
+import { closeDrawer,toggleDrawer } from '../../actions/app';
 import catalogActions from '../../actions/catalog';
 import { createAccount, getUserDetails, signOut } from '../../actions/user';
+
 import Navigation from './navigation';
 
 /**
@@ -28,12 +29,13 @@ const Container = props => {
         getUserDetails,
         signOut,
         updateCategories,
-        user: userState
+        user: userState,
+        startRegister,
     } = props;
 
     // create the api object for each slice
     // TODO: extract from this file
-    const appApi = useMemo(() => ({ closeDrawer }), [closeDrawer]);
+    const appApi = useMemo(() => ({ closeDrawer, startRegister }), [closeDrawer, startRegister]);
 
     const catalogApi = useMemo(() => ({ updateCategories }), [
         updateCategories
@@ -75,7 +77,8 @@ const mapDispatchToProps = {
     createAccount,
     getUserDetails,
     signOut,
-    updateCategories: catalogActions.updateCategories
+    updateCategories: catalogActions.updateCategories,
+    startRegister:() =>  toggleDrawer('startRegister')
 };
 
 export default connect(

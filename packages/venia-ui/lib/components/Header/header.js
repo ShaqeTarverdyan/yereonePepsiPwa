@@ -4,9 +4,11 @@ import { bool, func, object, shape, string } from 'prop-types';
 import Logo from '../Logo';
 import { Link, resourceUrl, Route } from '@magento/venia-drivers';
 import NavigationDesktop from '../NavigationDesktop';
-import MiniCart from '../MiniCartDesktop';
+import MiniCartDesktop from '../MiniCartDesktop';
+import miniCartMobile from '../MiniCart';
 import Icon from '../Icon';
-import { Menu as MenuIcon } from 'react-feather';
+import { Menu as MenuIcon} from 'react-feather';
+import SearchTrigger from './searchTrigger';
 
 
 
@@ -14,7 +16,7 @@ import UserTrigger from './userTrigger';
 import HeaderTop from './HeaderTop';
 import CartTrigger from './cartTrigger';
 import NavTrigger from './navTrigger';
-import SearchTrigger from './searchTrigger';
+
 import OnlineIndicator from '../OnlineIndicator';
 
 import { mergeClasses } from '../../classify';
@@ -49,13 +51,21 @@ const Header = props => {
         <header className={classes.root}>
             <HeaderTop />
             <div className={classes.mainHeader}>
+                <div className={classes.menuMobile}>
+                    <NavTrigger>
+                        <Icon src={MenuIcon} />
+                    </NavTrigger>
+                </div>
                 <div >
-                    <Link to={resourceUrl('/')}>
-                        <Logo classes={{ logo: classes.logo }} />
-                    </Link>
+                    <div className={classes.logo}>
+                        <Link to={resourceUrl('/')} >
+                            <Logo />
+                        </Link>
+                        <OnlineIndicator hasBeenOffline={hasBeenOffline} isOnline={isOnline}/>
+                    </div>
                 </div>
                 <div className={classes.actions}>
-                    <div>
+                    <div className={classes.searchDesktop}>
                         <Suspense fallback={searchOpen ? suspenseFallback : null}>
                             <Route
                                 render={({ history, location }) => (
@@ -68,28 +78,38 @@ const Header = props => {
                             />
                         </Suspense>
                     </div>
+                    <div className={classes.searchMobile}>
+                        <SearchTrigger searchOpen={searchOpen} toggleSearch={toggleSearch}>
+                            <span className={classes.iconSearch} />
+                        </SearchTrigger>
+                    </div>
                     <div className={classes.userTrigger}>
-                        <UserTrigger startRegister={startRegister}/>
+                        <UserTrigger startRegister={startRegister} classes={defaultClasses} />
                     </div>
                     <div className={classes.cart}>
                         <div className={classes.cartTrigger}>
                             <CartTrigger {...cartTriggerProps} />
                         </div>
-                        <div className={classes.miniCart}>
-                            <MiniCart isOpen={true} />
+                        <div className={classes.miniCartDesktop}>
+                            <MiniCartDesktop isOpen={true} />
                         </div>
                     </div>
-                    
                 </div>
             </div>
-            <div className={classes.menuList}>
+            <div className={classes.menuDesktop}>
                 <NavigationDesktop />
             </div>
-            <div className={classes.menuMobile}>
-                <NavTrigger>
-                    <Icon src={MenuIcon} />
-                </NavTrigger>
-            </div>
+            <Suspense fallback={searchOpen ? suspenseFallback : null}>
+                <Route
+                    render={({ history, location }) => (
+                        <SearchBar
+                            isOpen={searchOpen}
+                            history={history}
+                            location={location}
+                        />
+                    )}
+                />
+            </Suspense>
         </header>
     );
 };

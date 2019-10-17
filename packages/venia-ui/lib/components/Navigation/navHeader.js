@@ -10,6 +10,7 @@ import { mergeClasses } from '../../classify';
 import Icon from '../Icon';
 import Trigger from '../Trigger';
 import defaultClasses from './navHeader.css';
+import UserTrigger from '../Header/userTrigger';
 
 const titles = {
     CREATE_ACCOUNT: 'Create Account',
@@ -20,7 +21,7 @@ const titles = {
 };
 
 const NavHeader = props => {
-    const { isTopLevel, onBack, onClose, view } = props;
+    const { isTopLevel, onBack, onClose, view, startRegister } = props;
     const classes = mergeClasses(defaultClasses, props.classes);
 
     const title = titles[view] || titles.MENU;
@@ -28,9 +29,10 @@ const NavHeader = props => {
 
     return (
         <Fragment>
-            <Trigger key="backButton" action={onBack}>
+            {/* <Trigger key="backButton" action={onBack}>
                 <Icon src={backIcon} />
-            </Trigger>
+            </Trigger> */}
+            <UserTrigger startRegister={startRegister} />
             <h2 key="title" className={classes.title}>
                 <span>{title}</span>
             </h2>

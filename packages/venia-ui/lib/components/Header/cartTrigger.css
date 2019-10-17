@@ -1,3 +1,24 @@
 .root {
     composes: root from '../clickable.css';
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.iconCart:before {
+    font-family: 'pepsi';
+    font-size: 20px;
+    line-height: 35px;
+    content: "\70";
+}
+
+@media (min-width: 768px) {
+    .iconCart:before {
+        font-size: 27px;
+    }
+
+    .iconCart {
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+
 }

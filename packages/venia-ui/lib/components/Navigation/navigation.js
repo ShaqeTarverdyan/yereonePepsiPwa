@@ -19,7 +19,7 @@ const ancestors = {
 
 const Navigation = props => {
     // retrieve app state from context
-    const [appState, { closeDrawer }] = useContext(AppContext);
+    const [appState, { closeDrawer, startRegister }] = useContext(AppContext);
     const [catalogState, { updateCategories }] = useContext(CatalogContext);
     const [, { getUserDetails }] = useContext(UserContext);
 
@@ -27,7 +27,6 @@ const Navigation = props => {
     useEffect(() => {
         getUserDetails();
     }, [getUserDetails]);
-
     // extract relevant data from app state
     const { drawer } = appState;
     const isOpen = drawer === 'nav';
@@ -84,6 +83,8 @@ const Navigation = props => {
                     onBack={handleBack}
                     onClose={closeDrawer}
                     view={view}
+                    startRegister={startRegister}
+                    showSignIn={showSignIn}
                 />
             </header>
             <div className={bodyClassName}>

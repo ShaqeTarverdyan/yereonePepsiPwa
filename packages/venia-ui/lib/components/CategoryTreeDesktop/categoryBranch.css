@@ -7,7 +7,7 @@
 }
 .target:hover {
     cursor: pointer;
-    color: rgb(var(--pepsi-blue));
+    color: rgb(var(--blue));
 }
 .text {
     composes: text from './categoryLeaf.css';
@@ -40,24 +40,47 @@
 }
 .label {
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
-    width: 32px;
-    height: 16px;
+    width: 26px;
+    height: 11.5px;
     color: white;
     font-family: Roboto Condensed;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 8px;
+    line-height: 11px;
     text-align: center;
+    text-transform: uppercase;
 }
+
 .labelSale {
     composes: label;
     background-color: red;
-
+}
+.labelSale::after {
+    background-color: red;
+    content: ' ';
+    width: 6px;
+    height: 6px;
+    display: block;
+    position: absolute;
+    left: calc(50% - 3px);
+    transform: rotate(45deg);
+    bottom: -3px;
 }
 .labelNew {
     composes: label;
     background-color: green;
+}
+.labelNew::after {
+    background-color: green;
+    content: ' ';
+    width: 6px;
+    height: 6px;
+    display: block;
+    position: absolute;
+    left: calc(50% - 3px);
+    transform: rotate(45deg);
+    bottom: -3px;
 }

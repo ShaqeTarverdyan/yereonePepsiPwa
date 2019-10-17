@@ -1,27 +1,24 @@
 import React from 'react';
 import Feature from './feature';
-import deliveryTruck from './images/deliveryTruck.png';
-import moneyBag from './images/moneyBag.png';
-import support from './images/support.png';
 
 const data = [
     {
         id: 1,
         title: 'FREE SHIPPING',
         text: 'Loream ipsum dolor sit amet dolor. ',
-        image: deliveryTruck
+        icon: 'iconTruck'
     },
     {
         id: 2,
         title: 'MONEY BACK',
         text: 'Loream ipsum dolor sit amet dolor. ',
-        image: moneyBag
+        icon: 'iconPocket'
     },
     {
         id: 3,
         title: 'CUSTOMER SUPPORT',
         text: 'Loream ipsum dolor sit amet dolor. ',
-        image: support
+        icon: 'iconSetting'
     }
 ]
 

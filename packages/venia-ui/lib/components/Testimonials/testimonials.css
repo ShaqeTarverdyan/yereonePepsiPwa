@@ -1,49 +1,102 @@
 .testimonial {
     text-align: center;
-
-}
-.image {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: auto;
-}
-.image img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-.text {
-    height: 200px;
-    font-family: Roboto Condensed;
-    font-style: italic;
+    font-family: 'RobotoCondensed';
     font-weight: normal;
+    font-style: normal;
+    align-items: baseline;
+    margin-top: 30px;
+}
+
+.image {
+    width: 87px;
+    border-radius: 50%;
+    margin: 17px auto;
+}
+
+.image img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+}
+
+.text {
     font-size: 16px;
     line-height: 160%;
-    text-align: center;
-    letter-spacing: 0.04em;
     color: #5C5C5C;
-    padding: 40px 10px;
+    /* padding: 18px 10px; */
+    height: 93px;
+    width: 400px;
+    margin-top: 17px;
 }
 
-.name {
-    font-family: Roboto Condensed;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    line-height: 50px;
+.information::before {
+    content: ' ';
+    background-color: rgb(var(--blue));
+    height: 5px;
+    width: 5px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.information {
+    font-size: 14px;
+    line-height: 16px;
     text-align: center;
     letter-spacing: 0.02em;
-    color: #000000;
+    display: grid;
+    margin-top: 19px;
 }
-.position {
-    font-family: Roboto Condensed;
+
+.testimonialRating {
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.job {
+    font-family: 'RobotoCondensed';
     font-style: normal;
     font-weight: 300;
-    font-size: 16px;
-    line-height: 50px;
+    font-size: 12px;
+    line-height: 14px;
     text-align: center;
     letter-spacing: 0.02em;
     color: #5C5C5C;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+/* desktop style */
+@media (min-width: 768px) {
+    .testimonial {
+        margin-top: 0px;
+    }
+
+    .image img {
+        width: 88px;
+        height: 88px;
+    }
+
+    .testimonialRating {
+        margin-top: 45px;
+    }
+
+    .text {
+        height: 111px;
+    }
+
+    .information {
+        font-size: 18px;
+        line-height: 36px;
+        margin-top: 25px;
+    }
+    .job {
+        font-size: 16px;
+        line-height: 19px;
+        margin-top: 0px;
+    }
+
 
 }

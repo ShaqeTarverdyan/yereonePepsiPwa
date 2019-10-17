@@ -1,59 +1,144 @@
-
 .root {
     position: sticky;
     z-index: 10;
+    height: auto;
 }
+
 .mainHeader {
-    width: var(--pepsi-desktop-width);
-    height: 150px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'menu logo actions';
+    height: 60px;
+    text-align: start;
     align-items: center;
-}
-.actions {
-    display: flex
-}
-.userTrigger {
-    display: flex;
-    padding: 5px;
+    padding: 0px 12px;
 }
 
-.cart {
-    position: relative;
-}
-.miniCart{
-    display: none;
-    position: absolute;
-    right: 0;
-    width: 490px;
-    box-shadow: 0 3px 10px -5px;  
-}
-.cart:hover .miniCart{
-    display: block
+.menuMobile {
+    grid-area: menu;
 }
 
-.navTrigger,
-.cartTrigger {
-    composes: root from '../clickable.css';
-    height: 55px;
-    width: 55px;
-    padding: 5px;
-    position: relative;
+.top {
+    display: grid;
 }
 
 .logo {
-    height: 150px;
+    display: flex;
+    justify-content: center;
+    grid-area: logo;
 }
-.menuList {
+
+.actions{
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: inherit;
+}
+
+.searchDesktop {
     display: none;
 }
-/* style for desktop */
+
+.miniCartDesktop {
+    display: none;
+}
+
+.cartTrigger {
+    composes: root from '../clickable.css';
+    position: relative;
+    padding: 5px 3px;
+    display: flex;
+    justify-content: center;;
+    padding-top: 13px;
+    padding-left: 5px;
+    height: 41px;
+    width: 55px;
+}
+
+.searchMobile {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menuDesktop, .userTrigger {
+    display: none;
+}
+
+.iconUser:before {
+    font-family: 'pepsi';
+    font-size: 26px;
+    padding-left: 6px;
+    color: gray;
+    content: "\71";
+}
+
+.iconSearch:before {
+    font-size: 18px;
+    font-family: 'pepsi';
+    content: "\75";
+}
+
+.logo img {
+    width: 87px;
+    height: 33px;
+}
+
+/* desktop style */
 @media (min-width: 768px) {
-    .menuMobile {
-        display:none;
+    .mainHeader {
+        max-width: var(--desktop-width);
+        height: 126px;
+        margin: 0px auto;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 'logo actions';
     }
-    .menuList {
+
+    .logo {
+        display: grid;
+        justify-content: start;
+        padding-top: 20px;
+    }
+
+    .actions {
+        grid-template-columns: 16fr 1fr 1fr;
+        padding-top: 26px;
+    }
+
+    .searchDesktop {
         display: block;
+        width: 523px;
+    }
+
+    .menuMobile, .searchMobile {
+        display: none;
+    }
+
+    .menuDesktop{
+        display: block;
+    }
+
+    .cart {
+        position: relative;
+    }
+
+    .cart:hover .miniCartDesktop{
+        display: block;
+        position: absolute;
+        right: 0;
+        width: 490px;
+        box-shadow: 0 3px 10px -5px;
+    }
+
+    .userTrigger {
+        display: flex;
+        padding-top: 10px;
+        justify-content: center;
+    }
+
+    .cartTrigger {
+        height: 66px;
+        width: 64px;
     }
 }

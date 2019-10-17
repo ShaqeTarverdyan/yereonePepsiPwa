@@ -2,7 +2,7 @@
     align-items: center;
     display: none;
     justify-content: center;
-    padding: 0 1rem;
+
 }
 
 .root_open {
@@ -16,6 +16,7 @@
     justify-items: stretch;
     margin-bottom: 0.5rem;
     width: 100%;
+    padding: 0px 7px;
 }
 
 .container {
@@ -23,8 +24,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    max-width: 24rem;
     width: 100%;
+    padding-left: 40px;
 }
 
 .search {

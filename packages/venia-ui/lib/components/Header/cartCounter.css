@@ -1,12 +1,26 @@
 .root {
     font-weight: 600;
     background-color: rgb(var( --pepsi-red));
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     position: absolute;
     top: 0;
     right: 0;
     padding: 3px;
-    border-radius: 10px;
-    font-size: small;
-    width: 20px;
+    border-radius: 50%;
+    font-size: 9px;
+    width: 15px;
+    height: 15px;
+    line-height: 11px;
+}
+/* desktop style */
+@media (min-width: 768px) {
+    .root {
+        top: 12px;
+        font-size: small;
+        width: 20px;
+        height: 20px;
+    }
 }

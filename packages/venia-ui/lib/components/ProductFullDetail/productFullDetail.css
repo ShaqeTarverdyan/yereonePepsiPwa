@@ -4,11 +4,13 @@
     display: grid;
     grid-row-gap: 70px;
 }
+
 .form {
     display: grid;
     grid-template-columns: 2fr 2fr 1fr;
     grid-column-gap: 70px;
 }
+
 .name {
     font-family: 'RobotoCondensed';
     font-style: normal;
@@ -17,14 +19,17 @@
     line-height: 35px;
     letter-spacing: 0.06em;
 }
+
 .mainInformation {
    
 }
+
 .estimate {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 25px 0px;
 }
+
 .productPrice {
     font-family: 'RobotoCondensed';
     font-style: normal;
@@ -32,11 +37,13 @@
     font-size: 20px;
     line-height: 23px;
     letter-spacing: 0.02em;
-    color: rgb(var(--pepsi-blue));
+    color: rgb(var(--blue));
 }
+
 .options {
     padding: 20px 0px;
 }
+
 .addToCart {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -53,12 +60,15 @@
     text-align: center;
    
 }
+
 .quantity button {
     outline: none;
 }
+
 .addtoCartButton {
     width: 133px;
 }
+
 .shortDescription {
     font-family: 'RobotoCondensed';
     font-style: normal;
@@ -68,6 +78,7 @@
     letter-spacing: 0.06em;
     color: #717171;
 }
+
 .secondaryInformation {
     border-left: 1px solid lightslategray;
 }
